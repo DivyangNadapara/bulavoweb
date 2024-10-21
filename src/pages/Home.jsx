@@ -741,7 +741,7 @@ function Home() {
             className="faq-one__bg"
             style={{ backgroundImage: `url(${faq})` }}
           ></div>
-          <div style={{border:'1px solid black', height:'80vh'}} className="container">
+          <div style={{border:'1px solid black', height:'60vh'}} className="container">
             <div className="row">
               <div className="col-xl-6 col-lg-6">
                 <div className="faq-one__left">
