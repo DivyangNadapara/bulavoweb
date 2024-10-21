@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Header from '../components/Header.jsx';
 import page from "../assets/images/backgrounds/page-header-bg-img.jpg";
 import { Link } from 'react-router-dom';
+import Footer from '../components/footer/Footer.jsx';
 
 function Patner() {
   const [formData, setFormData] = useState({
@@ -97,6 +98,7 @@ function Patner() {
               />
             </div>
             <div className="form-group file-upload">
+              <label style={{paddingLeft:'14px'}}>Upload your Aadhar Card Photo</label>
               <input
                 type="file"
                 name="aadharCard"
@@ -104,9 +106,9 @@ function Patner() {
                 onChange={handleChange}
                 required
               />
-              <label>Upload your Aadhar Card Photo</label>
             </div>
             <div className="form-group file-upload">
+              <label style={{paddingLeft:'14px'}}>Upload your Photo</label>
               <input
                 type="file"
                 name="photo"
@@ -114,7 +116,6 @@ function Patner() {
                 onChange={handleChange}
                 required
               />
-              <label>Upload your Photo</label>
             </div>
             <button type="submit" className="btn-submit">Submit</button>
           </form>
@@ -124,7 +125,6 @@ function Patner() {
       <style jsx>{`
         .partner-form {
           padding: 50px 0;
-       
           border-radius: 12px;
         }
         .form {
@@ -152,7 +152,7 @@ function Patner() {
           outline: none;
         }
         .form-group label {
-          margin-top: 5px;
+          margin-bottom: 5px;
           font-size: 14px;
           color: #555;
           display: block;
@@ -161,11 +161,8 @@ function Patner() {
           display: flex;
           flex-direction: column;
         }
-        .file-upload input {
-          margin-bottom: 10px;
-        }
         .btn-submit {
-          background-color: #ff7e5f;
+          background-color: black;
           color: white;
           padding: 15px 25px;
           border: none;
@@ -179,6 +176,7 @@ function Patner() {
           transform: scale(1.05);
         }
       `}</style>
+      <Footer/>
     </div>
   );
 }
