@@ -10,7 +10,7 @@ const CustomCursor = () => {
     };
 
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768); // Adjust the threshold as needed
+      setIsMobile(window.innerWidth < 1000); // Adjust the threshold as needed
     };
 
     window.addEventListener('mousemove', handleMouseMove);
