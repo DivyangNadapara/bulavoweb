@@ -4,8 +4,11 @@ import service from "../assets/images/services/services-page-img-1.png";
 import contact from "../assets/images/backgrounds/contact-bar-bg.jpg";
 import bar from "../assets/images/icon/contact-bar-call-icon.png";
 import { Link } from "react-router-dom";
-
+import tv from "../assets/img/tv.png";
+import gyser from "../assets/img/gyser.png";
 import Footer from "../components/footer/Footer.jsx";
+import Chimney from "../assets/img/Chimney.png";
+import RO from "../assets/img/R.O.png";
 function Services() {
   return (
     <div className="page-wrapper">
@@ -201,10 +204,10 @@ function Services() {
             <li className="services-page__list">
               <div className="services-page__single">
                 <div className="services-page__icon">
-                  <span className="icon-plumbing"></span>
+                  <img style={{height:'66px'}} src={tv} alt=""/>
                 </div>
                 <h3 className="services-page__title">
-                  <a href="single-service.html">Plumbing</a>
+                  <a href="single-service.html">Tv</a>
                 </h3>
                 <p className="services-page__text">
                   New normal that has done evolved from generation is on the
@@ -217,6 +220,69 @@ function Services() {
                 </div>
               </div>
             </li>
+
+            <li className="services-page__list">
+              <div className="services-page__single">
+                <div className="services-page__icon">
+                  <img style={{height:'66px'}} src={gyser} alt=""/>
+                </div>
+                <h3 className="services-page__title">
+                  <a href="single-service.html">Gyser</a>
+                </h3>
+                <p className="services-page__text">
+                  New normal that has done evolved from generation is on the
+                  runway heading to wards a streamlined.
+                </p>
+                <div className="services-page__read-more">
+                  <a href="single-service.html">
+                  View Details <span>+</span>
+                  </a>
+                </div>
+              </div>
+            </li>
+
+            <li className="services-page__list">
+              <div className="services-page__single">
+                <div className="services-page__icon">
+                  <img style={{height:'66px'}} src={Chimney} alt=""/>
+                </div>
+                <h3 className="services-page__title">
+                  <a href="single-service.html">Chimney</a>
+                </h3>
+                <p className="services-page__text">
+                  New normal that has done evolved from generation is on the
+                  runway heading to wards a streamlined.
+                </p>
+                <div className="services-page__read-more">
+                  <a href="single-service.html">
+                  View Details <span>+</span>
+                  </a>
+                </div>
+              </div>
+            </li>
+
+
+            <li className="services-page__list">
+              <div className="services-page__single">
+                <div className="services-page__icon">
+                  <img style={{height:'66px'}} src={RO} alt=""/>
+                </div>
+                <h3 className="services-page__title">
+                  <a href="single-service.html">R.O</a>
+                </h3>
+                <p className="services-page__text">
+                  New normal that has done evolved from generation is on the
+                  runway heading to wards a streamlined.
+                </p>
+                <div className="services-page__read-more">
+                  <a href="single-service.html">
+                  View Details <span>+</span>
+                  </a>
+                </div>
+              </div>
+            </li>
+
+
             {/* <!--Services Page Single End--> */}
           </ul>
           <div className="services-page__bottom">

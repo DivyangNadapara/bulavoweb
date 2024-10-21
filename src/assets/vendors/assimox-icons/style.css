@@ -109,6 +109,10 @@
 .icon-blender:before {
   content: "\e911";
 }
+.icon-tv:before {
+  content: "\e924";
+}
+
 .icon-ac:before {
   content: "\e912";
 }
