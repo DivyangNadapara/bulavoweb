@@ -741,7 +741,7 @@ function Home() {
             className="faq-one__bg"
             style={{ backgroundImage: `url(${faq})` }}
           ></div>
-          <div className="container">
+          <div style={{border:'1px solid black', height:'80vh'}} className="container">
             <div className="row">
               <div className="col-xl-6 col-lg-6">
                 <div className="faq-one__left">
@@ -830,11 +830,7 @@ function Home() {
                       <div className="row">
                         <div className="col-xl-12">
                           <div className="faq-one__form-input-box">
-                            <input
-                              type="text"
-                              placeholder="Your Name"
-                              name="name"
-                            />
+
                           </div>
                         </div>
                         <div className="col-xl-12">
@@ -848,29 +844,17 @@ function Home() {
                         </div>
                         <div className="col-xl-12">
                           <div className="faq-one__form-input-box">
-                            <input
-                              type="email"
-                              placeholder="Email Address"
-                              name="email"
-                            />
+                           
                           </div>
                         </div>
                       </div>
                       <div className="row">
                         <div className="col-xl-12">
                           <div className="faq-one__form-input-box text-message-box">
-                            <textarea
-                              name="message"
-                              placeholder="Message"
-                            ></textarea>
+                           
                           </div>
                           <div className="faq-one__form-btn-box">
-                            <button
-                              type="submit"
-                              className=" thm-btn faq-one__form-btn"
-                            >
-                              send request
-                            </button>
+                          
                           </div>
                         </div>
                       </div>
