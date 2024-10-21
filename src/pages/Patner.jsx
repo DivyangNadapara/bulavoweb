@@ -119,6 +119,7 @@ function Patner() {
             </div>
             <button type="submit" className="btn-submit">Submit</button>
           </form>
+        
         </div>
       </section>
 

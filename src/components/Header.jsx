@@ -1,11 +1,12 @@
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';  
+import { Link, useLocation } from 'react-router-dom';  
 import logo from '../assets/img/logo.png';
 
 const Header = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isSticky, setIsSticky] = useState(false); // State for sticky header
+  const [isSticky, setIsSticky] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   const menuItems = [
     { name: 'Home', path: '/' },           
@@ -16,11 +17,20 @@ const Header = () => {
     { name: 'Become a Patner', path: '/patner' }
   ];
 
+  const getLinkStyle = (isHomePage) => {
+    if (isSticky) {
+      return { color: 'white' }; // Always white when sticky
+    }
+    return {
+      color: isHomePage ? 'black' : 'white', // Black on home, white on other pages
+      transition: 'color 0.3s ease'
+    };
+  };
+
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  // Handle scroll event to set sticky header
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -31,8 +41,6 @@ const Header = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
-    
-    // Cleanup event listener on component unmount
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -41,15 +49,14 @@ const Header = () => {
   return (
     <>
       <header className={`main-header ${isSticky ? 'sticky' : ''}`} style={{
-        position: isSticky ? 'fixed' : 'absolute', // Set header position
+        position: isSticky ? 'fixed' : 'absolute',
         top: 0,
         left: 0,
-        width: '100%', // Make it full width
-        background: isSticky ? 'black' : 'transparent', // Change background on scroll
+        width: '100%',
+        background: isSticky ? 'black' : 'transparent',
         transition: 'background 0.3s ease, top 0.3s ease', 
-        zIndex: 1000, // Ensure it's above other content
+        zIndex: 1000,
         marginTop: isSticky ? '-32px' : '',
-
       }}>
         <nav className="main-menu">
           <div className="main-menu__wrapper">
@@ -62,22 +69,32 @@ const Header = () => {
                 </div>
                 <div className="main-menu__main-menu-box">
                   <div className="main-menu__main-menu-box-inner">
-                    <a href="#" className="mobile-nav__toggler" onClick={toggleSidebar}>
+                    <a 
+                      href="#" 
+                      className="mobile-nav__toggler" 
+                      onClick={toggleSidebar}
+                      style={getLinkStyle(isHomePage)}
+                    >
                       <i className="fa fa-bars"></i>
                     </a>
                     <ul className="main-menu__list">
                       {menuItems.map((item, index) => (
                         <li className="dropdown" key={index}>
-                          <Link to={item.path}>{item.name}</Link>
+                          <Link 
+                            to={item.path}
+                            style={getLinkStyle(isHomePage)}
+                          >
+                            {item.name}
+                          </Link>
                         </li>
                       ))}
                     </ul>
                   </div>
                 </div>
               </div>
-              <div  className="main-menu__right">
-                <div style ={{backgroundColor:'white'} } className="main-menu__call">
-                  <div   className="main-menu__call-icon">
+              <div className="main-menu__right">
+                <div style={{backgroundColor: 'white'}} className="main-menu__call">
+                  <div className="main-menu__call-icon">
                     <span className="icon-telephone"></span>
                   </div>
                   <div className="main-menu__call-content">
@@ -103,12 +120,12 @@ const Header = () => {
           top: 0,
           left: 0,
           height: '100%',
-          width: '300px', // Adjust width as needed
-          background: '#0b1a3a', // Sidebar background color
-          color: 'white', // Text color
+          width: '300px',
+          background: '#0b1a3a',
+          color: 'white',
           padding: '20px',
           transition: 'transform 0.3s ease',
-          zIndex: 1000 // Ensure it's above other content
+          zIndex: 1000
         }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <Link to="/">
@@ -134,17 +151,18 @@ const Header = () => {
           }}>
             {menuItems.map((item, index) => (
               <li key={index} style={{ margin: '15px 0', borderBottom: '1px solid #555', paddingBottom: '10px', position: 'relative' }}>
-                <Link to={item.path} 
-                      onClick={toggleSidebar} 
-                      style={{
-                        padding: '2px',
-                        color: 'white',
-                        textDecoration: 'none',
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                        paddingRight: '5px' // Add space for the square box
-                      }}>
+                <Link 
+                  to={item.path} 
+                  onClick={toggleSidebar} 
+                  style={{
+                    padding: '2px',
+                    color: 'white', // Sidebar links always white
+                    textDecoration: 'none',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    paddingRight: '5px'
+                  }}>
                   {item.name}
                   <span style={{
                     display: 'inline-block',
@@ -164,7 +182,7 @@ const Header = () => {
 
           <div style={{
             marginTop: 'auto',
-            paddingTop: '10px', // Add padding for space above contact info
+            paddingTop: '10px',
           }}>
             <p style={{ color: 'white', marginBottom: '10px' }}>Phone: <a href="tel:+9328939099" style={{ color: 'white' }}>+91 9328939099</a></p>
             <p style={{ color: 'white', marginBottom: '10px' }}>Email: <a href="mailto:info@example.com" style={{ color: 'white' }}>info@example.com</a></p>
