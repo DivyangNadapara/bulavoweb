@@ -2,16 +2,24 @@ import React, { useEffect, useState } from 'react';
 
 const CustomCursor = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleMouseMove = (e) => {
       setPosition({ x: e.clientX, y: e.clientY });
     };
 
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768); // Adjust the threshold as needed
+    };
+
     window.addEventListener('mousemove', handleMouseMove);
-    
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Check initial size
+
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
@@ -44,6 +52,8 @@ const CustomCursor = () => {
     zIndex: 999991,
     pointerEvents: 'none', // Ensure clicks pass through
   };
+
+  if (isMobile) return null; // Don't render cursor on mobile
 
   return (
     <>
