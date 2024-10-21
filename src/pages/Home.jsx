@@ -810,58 +810,7 @@ function Home() {
                   </div>
                 </div>
               </div>
-              <div className="col-xl-6 col-lg-6">
-                <div className="faq-one__right">
-                  <div
-                    className="faq-one__form-box wow slideInRight"
-                    data-wow-delay="100ms"
-                    data-wow-duration="2500ms"
-                  >
-                    <h2>Send Your Message to Us</h2>
-                    <p>
-                      Please feel free to get in touch using the form below.
-                      We’d love to hear for you..
-                    </p>
-                    <form
-                      action="https://bracketweb.com/assimox-html/assets/inc/sendemail.php"
-                      className="faq-one__form comment-form-2-validated"
-                      noValidate="novalidate"
-                    >
-                      <div className="row">
-                        <div className="col-xl-12">
-                          <div className="faq-one__form-input-box">
-
-                          </div>
-                        </div>
-                        <div className="col-xl-12">
-                          <div className="faq-one__form-input-box">
-                            <input
-                              type="text"
-                              placeholder="Phone No."
-                              name="Phone"
-                            />
-                          </div>
-                        </div>
-                        <div className="col-xl-12">
-                          <div className="faq-one__form-input-box">
-                           
-                          </div>
-                        </div>
-                      </div>
-                      <div className="row">
-                        <div className="col-xl-12">
-                          <div className="faq-one__form-input-box text-message-box">
-                           
-                          </div>
-                          <div className="faq-one__form-btn-box">
-                          
-                          </div>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
+            
             </div>
           </div>
         </section>
