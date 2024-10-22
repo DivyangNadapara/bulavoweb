@@ -6,8 +6,12 @@ import Footer from '../components/footer/Footer.jsx';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { storage } from '../firebaseConfig.js';
+import { ref, uploadString, getDownloadURL } from 'firebase/storage'; // Import necessary Firebase Storage functions
 
-function Partner() {
+
+
+function Patner() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -17,59 +21,67 @@ function Partner() {
     profileimg: null,
   });
 
-  const [fileNames, setFileNames] = useState({
-    aadharimg: '',
-    profileimg: ''
-  });
-
   const handleChange = (e) => {
     const { name, value, files } = e.target;
 
     if (files && files.length > 0) {
-      const file = files[0];
-      setFormData((prevData) => ({
-        ...prevData,
-        [name]: file, // Update file directly in formData
-      }));
+        const file = files[0];
 
-      setFileNames((prevNames) => ({
-        ...prevNames,
-        [name]: file.name,
-      }));
+        const reader = new FileReader();
+
+        reader.onload = () => {
+            const img = new Image();
+            img.src = reader.result;
+
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                canvas.width = img.width;
+                canvas.height = img.height;
+
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0);
+
+                const compressedBase64 = canvas.toDataURL('image/jpeg', 0.5); // Compress image
+
+                setFormData(prevData => ({
+                    ...prevData,
+                    [name]: compressedBase64 // Set compressed image data
+                }));
+            };
+        };
+
+        reader.readAsDataURL(file);
     } else {
-      setFormData((prevData) => ({
-        ...prevData,
-        [name]: value,
-      }));
+        setFormData(prevData => ({
+            ...prevData,
+            [name]: value
+        }));
     }
-  };
+};
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
-    const formDataToSend = new FormData();
-    formDataToSend.append('name', formData.name);
-    formDataToSend.append('email', formData.email);
-    formDataToSend.append('telnumber', formData.telnumber);
-    formDataToSend.append('expertise', formData.expertise);
-    
-    // Append files only if they are defined
-    if (formData.aadharimg) {
-      formDataToSend.append('aadharimg', formData.aadharimg);
-    }
-    if (formData.profileimg) {
-      formDataToSend.append('profileimg', formData.profileimg);
-    }
 
     try {
-      const response = await axios.post('https://bulavo-backend1-kohl.vercel.app/technician', formDataToSend, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
+      // Upload images to Firebase and get their URLs
+      const aadharRef = ref(storage, `images1/aadhar/${formData.aadharimg.name}`);
+      const profileRef = ref(storage, `images1/profile/${formData.profileimg.name}`);
+
+      await uploadString(aadharRef, formData.aadharimg, 'data_url'); // Upload Aadhar image
+      await uploadString(profileRef, formData.profileimg, 'data_url'); // Upload Profile image
+
+      const aadharUrl = await getDownloadURL(aadharRef); // Get Aadhar image URL
+      const profileUrl = await getDownloadURL(profileRef); // Get Profile image URL
+
+      // Send form data with image URLs to your API
+      const response = await axios.post('https://bulavo-backend1-kohl.vercel.app/technician', {
+        ...formData,
+        aadharimg: aadharUrl,
+        profileimg: profileUrl,
       });
-      console.log(response);
+
       toast.success('Form submitted successfully');
-      // Reset form after successful submission
       setFormData({
         name: '',
         email: '',
@@ -78,15 +90,13 @@ function Partner() {
         aadharimg: null,
         profileimg: null,
       });
-      setFileNames({
-        aadharimg: '',
-        profileimg: ''
-      });
+      console.log('Response:', response.data);
     } catch (error) {
       toast.error('Failed to submit form. Please try again.');
       console.error('Error submitting the form:', error);
     }
   };
+
   return (
     <div className="page-wrapper">
       <Header />
@@ -157,26 +167,24 @@ function Partner() {
               />
             </div>
             <div className="form-group file-upload">
-              <label style={{ paddingLeft: '14px' }}>Upload your Aadhar Card Photo</label>
+              <label style={{paddingLeft:'14px'}}>Upload your Aadhar Card Photo</label>
               <input
                 type="file"
                 name="aadharimg"
-                
+                accept="image/*"
                 onChange={handleChange}
                 required
               />
-              {fileNames.aadharimg && <span className="file-name">{fileNames.aadharimg}</span>}
             </div>
             <div className="form-group file-upload">
-              <label style={{ paddingLeft: '14px' }}>Upload your Photo</label>
+              <label style={{paddingLeft:'14px'}}>Upload your Photo</label>
               <input
                 type="file"
                 name="profileimg"
-              
+                accept="image/*"
                 onChange={handleChange}
                 required
               />
-              {fileNames.profileimg && <span className="file-name">{fileNames.profileimg}</span>}
             </div>
             <button type="submit" className="btn-submit">Submit</button>
           </form>
@@ -237,9 +245,9 @@ function Partner() {
           transform: scale(1.05);
         }
       `}</style>
-      <Footer />
+      <Footer/>
     </div>
   );
 }
 
-export default Partner;
+export default Patner;

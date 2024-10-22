@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify'; // Import Toastify components
+import 'react-toastify/dist/ReactToastify.css'; // Import Toastify styles
 import Header from "../components/Header.jsx";
 import page from "../assets/images/backgrounds/page-header-bg-img.jpg";
 import Footer from "../components/footer/Footer.jsx";
-import { useLocation } from "react-router-dom";
-import axios from 'axios';
+
 
 function Contact() {
   const location = useLocation();
@@ -17,11 +20,17 @@ function Contact() {
     pincode: "",
     message: "",
   });
-  const [submitStatus, setSubmitStatus] = useState({
-    loading: false,
-    error: null,
-    success: false
-  });
+
+  // Define regular expressions for validation
+  const regexPatterns = {
+    name: /^[A-Za-z\s]+$/, // Only letters and spaces
+    email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, // Basic email pattern
+    telnumber: /^\d{10}$/, // 10 digits
+    altPhone: /^\d{10}$/, // 10 digits
+    address: /^[A-Za-z0-9\s,.-]+$/, // Alphanumeric with spaces and some special chars
+    pincode: /^\d{5}$/, // 5 digits
+    message: /^.+$/, // Non-empty
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -33,20 +42,54 @@ function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent default form submission
-    setSubmitStatus({ loading: true, error: null, success: false });
     
+    const { name, email, telnumber, altPhone, address, pincode, message } = formData;
+    
+    // Validate each field
+    if (!regexPatterns.name.test(name)) {
+      toast.error("Invalid name. Only letters and spaces are allowed.");
+      return;
+    }
+    if (!regexPatterns.email.test(email)) {
+      toast.error("Invalid email format.");
+      return;
+    }
+    if (!regexPatterns.telnumber.test(telnumber)) {
+      toast.error("Telephone number must be 10 digits.");
+      return;
+    }
+    if (altPhone && !regexPatterns.altPhone.test(altPhone)) {
+      toast.error("Alternative phone number must be 10 digits.");
+      return;
+    }
+    if (!regexPatterns.address.test(address)) {
+      toast.error("Address can only contain letters, numbers, and basic punctuation.");
+      return;
+    }
+    if (!regexPatterns.pincode.test(pincode)) {
+      toast.error("Pincode must be 5 digits.");
+      return;
+    }
+    if (!regexPatterns.message.test(message)) {
+      toast.error("Message cannot be empty.");
+      return;
+    }
+
     const dataToSubmit = {
       ...formData,
       service: selectedService,
     };
 
     try {
-      const response = await axios.post("https://bulavo-backend1.vercel.app/bookservice", dataToSubmit);
+      const response = await axios.post("https://bulavo-backend1-kohl.vercel.app/bookservice", dataToSubmit);
 
       // Check if the response is successful
       if (response.status !== 201) {
         throw new Error("Failed to submit form. Please try again.");
       }
+
+      // Show success toast
+      toast.success("Form submitted successfully!");
 
       // Clear form on success
       setFormData({
@@ -59,14 +102,11 @@ function Contact() {
         message: "",
       });
       setSelectedService("");
-      setSubmitStatus({ loading: false, error: null, success: true });
+
     } catch (error) {
       console.error("Error submitting form:", error);
-      setSubmitStatus({ 
-        loading: false, 
-        error: "Failed to submit form. Please try again.", 
-        success: false 
-      });
+      // Show error toast
+      toast.error("Error submitting form. Please try again.");
     }
   };
 
@@ -77,10 +117,12 @@ function Contact() {
   }, [location.state]);
 
 
+
   return (
     <>
       <div className="page-wrapper">
         <Header />
+        <ToastContainer />
         <section className="page-header">
           <div
             className="page-header__bg"
@@ -119,14 +161,7 @@ function Contact() {
             <div className="row">
               <div className="col-xl-8 col-lg-7">
                 <div className="contact-page__left">
-                {submitStatus.success && (
-                    <div className="alert alert-success">
-                      Form submitted successfully! We'll get back to you soon.
-                    </div>
-                  )}
-                  {submitStatus.error && (
-                    <div className="alert alert-danger">{submitStatus.error}</div>
-                  )}
+               
                   <form onSubmit={handleSubmit} className="contact-page__form contact-form-validated">
                     <div className="row">
                       <div className="col-xl-6 col-lg-6 col-md-6">
@@ -137,6 +172,7 @@ function Contact() {
                             name="name"
                             value={formData.name}
                             onChange={handleInputChange}
+                            required
                           />
                         </div>
                       </div>
@@ -148,6 +184,7 @@ function Contact() {
                             name="email"
                             value={formData.email}
                             onChange={handleInputChange}
+                            required
                           />
                         </div>
                       </div>
@@ -159,6 +196,7 @@ function Contact() {
                             name="telnumber"
                             value={formData.telnumber}
                             onChange={handleInputChange}
+                            required
                           />
                         </div>
                       </div>
@@ -170,6 +208,7 @@ function Contact() {
                             name="altPhone"
                             value={formData.altPhone}
                             onChange={handleInputChange}
+                            required
                           />
                         </div>
                       </div>
@@ -179,6 +218,7 @@ function Contact() {
                       <div className="col-xl-6 col-lg-6 col-md-6">
                       <div className="contact-page__input-box">
                         <select
+                         required
                           name="services"
                           className="contact-page__dropdown"
                           value={selectedService}
@@ -211,6 +251,7 @@ function Contact() {
                             name="address"
                             value={formData.address}
                             onChange={handleInputChange}
+                            required
                           />
                         </div>
                         <div className="contact-page__input-box">
@@ -220,6 +261,7 @@ function Contact() {
                             name="pincode"
                             value={formData.pincode}
                             onChange={handleInputChange}
+                            required
                           />
                         </div>
                         <div className="contact-page__input-box text-message-box">
@@ -229,16 +271,17 @@ function Contact() {
                             placeholder="Your message"
                             value={formData.message}
                             onChange={handleInputChange}
+                            required
                           ></textarea>
                         </div>
                         <div className="contact-page__btn-box">
                           <button 
                             type="submit"
                             className="thm-btn contact-page__btn"
-                            disabled={submitStatus.loading}
+                           
                           >
                             Hire us now
-                            {submitStatus.loading ? "Submitting..." : "Hire us now"}
+                           
                           </button>
                         </div>
                       </div>
