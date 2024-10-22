@@ -3,35 +3,94 @@ import Header from '../components/Header.jsx';
 import page from "../assets/images/backgrounds/page-header-bg-img.jpg";
 import { Link } from 'react-router-dom';
 import Footer from '../components/footer/Footer.jsx';
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-function Patner() {
+function Partner() {
   const [formData, setFormData] = useState({
-    firstName: '',
+    name: '',
     email: '',
-    phoneNumber: '',
+    telnumber: '',
     expertise: '',
-    aadharCard: null,
-    photo: null,
+    aadharimg: null,
+    profileimg: null,
+  });
+
+  const [fileNames, setFileNames] = useState({
+    aadharimg: '',
+    profileimg: ''
   });
 
   const handleChange = (e) => {
-    const { name, value, type, files } = e.target;
-    if (type === 'file') {
-      setFormData({ ...formData, [name]: files[0] });
+    const { name, value, files } = e.target;
+
+    if (files && files.length > 0) {
+      const file = files[0];
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: file, // Update file directly in formData
+      }));
+
+      setFileNames((prevNames) => ({
+        ...prevNames,
+        [name]: file.name,
+      }));
     } else {
-      setFormData({ ...formData, [name]: value });
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic
-    console.log(formData);
-  };
+  
+    const formDataToSend = new FormData();
+    formDataToSend.append('name', formData.name);
+    formDataToSend.append('email', formData.email);
+    formDataToSend.append('telnumber', formData.telnumber);
+    formDataToSend.append('expertise', formData.expertise);
+    
+    // Append files only if they are defined
+    if (formData.aadharimg) {
+      formDataToSend.append('aadharimg', formData.aadharimg);
+    }
+    if (formData.profileimg) {
+      formDataToSend.append('profileimg', formData.profileimg);
+    }
 
+    try {
+      const response = await axios.post('https://bulavo-backend1-kohl.vercel.app/technician', formDataToSend, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      console.log(response);
+      toast.success('Form submitted successfully');
+      // Reset form after successful submission
+      setFormData({
+        name: '',
+        email: '',
+        telnumber: '',
+        expertise: '',
+        aadharimg: null,
+        profileimg: null,
+      });
+      setFileNames({
+        aadharimg: '',
+        profileimg: ''
+      });
+    } catch (error) {
+      toast.error('Failed to submit form. Please try again.');
+      console.error('Error submitting the form:', error);
+    }
+  };
   return (
     <div className="page-wrapper">
       <Header />
+      <ToastContainer />
       <section className="page-header">
         <div
           className="page-header__bg"
@@ -60,9 +119,9 @@ function Patner() {
             <div className="form-group">
               <input
                 type="text"
-                name="firstName"
-                placeholder="First Name"
-                value={formData.firstName}
+                name="name"
+                placeholder="Name"
+                value={formData.name}
                 onChange={handleChange}
                 required
               />
@@ -80,9 +139,9 @@ function Patner() {
             <div className="form-group">
               <input
                 type="tel"
-                name="phoneNumber"
+                name="telnumber"
                 placeholder="Phone Number"
-                value={formData.phoneNumber}
+                value={formData.telnumber}
                 onChange={handleChange}
                 required
               />
@@ -98,32 +157,33 @@ function Patner() {
               />
             </div>
             <div className="form-group file-upload">
-              <label style={{paddingLeft:'14px'}}>Upload your Aadhar Card Photo</label>
+              <label style={{ paddingLeft: '14px' }}>Upload your Aadhar Card Photo</label>
               <input
                 type="file"
-                name="aadharCard"
-                accept="image/*"
+                name="aadharimg"
+                
                 onChange={handleChange}
                 required
               />
+              {fileNames.aadharimg && <span className="file-name">{fileNames.aadharimg}</span>}
             </div>
             <div className="form-group file-upload">
-              <label style={{paddingLeft:'14px'}}>Upload your Photo</label>
+              <label style={{ paddingLeft: '14px' }}>Upload your Photo</label>
               <input
                 type="file"
-                name="photo"
-                accept="image/*"
+                name="profileimg"
+              
                 onChange={handleChange}
                 required
               />
+              {fileNames.profileimg && <span className="file-name">{fileNames.profileimg}</span>}
             </div>
             <button type="submit" className="btn-submit">Submit</button>
           </form>
-        
         </div>
       </section>
 
-      <style jsx>{`
+      <style jsx="true">{`
         .partner-form {
           padding: 50px 0;
           border-radius: 12px;
@@ -177,9 +237,9 @@ function Patner() {
           transform: scale(1.05);
         }
       `}</style>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
 
-export default Patner;
+export default Partner;

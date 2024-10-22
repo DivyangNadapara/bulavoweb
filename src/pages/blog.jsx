@@ -232,14 +232,7 @@ function blog() {
             </div>
             <div className="col-xl-4 col-lg-5">
               <div className="sidebar">
-                <div className="sidebar__single sidebar__search">
-                  <form action="#" className="sidebar__search-form">
-                    <input type="search" placeholder="Enter Search Keywords" />
-                    <button type="submit">
-                      <i className="icon-magnifying-glass"></i>
-                    </button>
-                  </form>
-                </div>
+                
                 <div className="sidebar__single sidebar__category">
                   <h3 className="sidebar__title">Categories</h3>
                   <ul className="sidebar__category-list list-unstyled">
@@ -355,7 +348,8 @@ function blog() {
       </section>
       {/* <!--Blog Page single End--> */}
       <Footer />
-      <a
+      <a 
+       aria-label="top"
         href="#"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         style={{

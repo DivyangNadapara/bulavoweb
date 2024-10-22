@@ -17,12 +17,17 @@ const Header = () => {
     { name: 'Become a Patner', path: '/patner' }
   ];
 
-  const getLinkStyle = (isHomePage) => {
+  const getLinkStyle = (path) => {
+    const isActive = location.pathname === path;
+    
     if (isSticky) {
-      return { color: 'white' }; // Always white when sticky
+      return { 
+        color: isActive ? '#f1d551' : 'white',
+        transition: 'color 0.3s ease'
+      };
     }
     return {
-      color: isHomePage ? 'black' : 'white', // Black on home, white on other pages
+      color: isActive ? '#f1d551' : (isHomePage ? 'black' : 'white'),
       transition: 'color 0.3s ease'
     };
   };
@@ -73,7 +78,8 @@ const Header = () => {
                       href="#" 
                       className="mobile-nav__toggler" 
                       onClick={toggleSidebar}
-                      style={getLinkStyle(isHomePage)}
+                      style={getLinkStyle('/')}
+                       aria-label="Open menu"
                     >
                       <i className="fa fa-bars"></i>
                     </a>
@@ -82,7 +88,7 @@ const Header = () => {
                         <li className="dropdown" key={index}>
                           <Link 
                             to={item.path}
-                            style={getLinkStyle(isHomePage)}
+                            style={getLinkStyle(item.path)}
                           >
                             {item.name}
                           </Link>
@@ -100,7 +106,7 @@ const Header = () => {
                   <div className="main-menu__call-content">
                     <p className="main-menu__call-sub-title">Need help? Talk to an expert</p>
                     <h4 className="main-menu__call-number">
-                      <a href="tel:+9328939099">+91 9328939099</a>
+                      <a  aria-label="phonenumber" href="tel:+9328939099">+91 9328939099</a>
                     </h4>
                   </div>
                 </div>
@@ -156,15 +162,16 @@ const Header = () => {
                   onClick={toggleSidebar} 
                   style={{
                     padding: '2px',
-                    color: 'white', // Sidebar links always white
+                    color: location.pathname === item.path ? '#f1d551' : 'white',
                     textDecoration: 'none',
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
-                    paddingRight: '5px'
+                    paddingRight: '5px',
+                    transition: 'color 0.3s ease'
                   }}>
                   {item.name}
-                  <span style={{
+                  {/* <span style={{
                     display: 'inline-block',
                     width: '30px',
                     height: '30px',
@@ -173,8 +180,8 @@ const Header = () => {
                     justifyContent: 'center',
                     alignItems: 'center',
                     marginLeft: '10px',
-                    backgroundColor: '#f1d551'
-                  }}>&gt;</span>
+                    backgroundColor: location.pathname === item.path ? '#f1d551' : '#555'
+                  }}>&gt;</span> */}
                 </Link>
               </li>
             ))}

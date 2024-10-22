@@ -58,7 +58,7 @@ const Footer = () => {
                 <div className="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
                     <div className="footer-widget__column footer-widget__about">
                         <div className="footer-widget__logo">
-                            <Link to="/"><img src={loge} alt=""></img></Link>
+                            <Link to="/"><img src={loge}  aria-label="bulavo" alt="bulavo"></img></Link>
                         </div>
                         <p className="site-footer__text">"Bulavo: Committed to excellence in home appliance service. Our expert technicians deliver prompt, quality repairs, putting your satisfaction at the forefront of everything we do."</p>
                     </div>
@@ -95,9 +95,9 @@ const Footer = () => {
                     <div className="footer-widget__column footer-widget__newsletter">
                        
                         <div className="site-footer__social">
-                            <a href="#"><i className="fab fa-facebook-f"></i></a>
+                            <a  aria-label="facebook" href="#"><i className="fab fa-facebook-f"></i></a>
                           
-                            <a href="#"><i className="fab fa-instagram"></i></a>
+                            <a  aria-label="instagram" href="#"><i className="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
@@ -117,7 +117,7 @@ const Footer = () => {
             </div>
         </div>
     </div>
-    <a href="#" data-target="html" className="scroll-to-target scroll-to-top"><i className="fa fa-angle-up"></i></a>
+    <a href="#"  aria-label="btn" data-target="html" className="scroll-to-target scroll-to-top"><i className="fa fa-angle-up"></i></a>
 </footer>
   );
 };

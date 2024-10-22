@@ -10,6 +10,7 @@ import Footer from "../components/footer/Footer.jsx";
 import Chimney from "../assets/img/Chimney.png";
 import RO from "../assets/img/R.O.png";
 function Services() {
+  
   return (
     <div className="page-wrapper">
       <Header />
@@ -53,237 +54,237 @@ function Services() {
             </p>
           </div>
           <ul className="list-unstyled services-page__list-box">
-            {/* <!--Services Page Single Start--> */}
             <li className="services-page__list">
               <div className="services-page__single">
                 <div className="services-page__icon">
                   <span className="icon-refrigerator"></span>
                 </div>
                 <h3 className="services-page__title">
-                  <a href="single-service.html">Refrigerator</a>
+                <Link to="/contact" state={{ service: "Refrigerator Repair" }}>
+                    Refrigerator Repair & service
+                  </Link>
                 </h3>
                 <p className="services-page__text">
                   New normal that has done evolved from generation is on the
-                  runway heading to wards a streamlined.
+                  runway heading towards a streamlined.
                 </p>
                 <div className="services-page__read-more">
-                  <Link to="/singleservice">
-                  View Details <span>+</span>
+                  <Link to="/contact" state={{ service: "Refrigerator Repair"}}>
+                    View Details <span>+</span>
                   </Link>
                 </div>
               </div>
             </li>
-            {/* <!--Services Page Single End-->
-                    <!--Services Page Single Start--> */}
             <li className="services-page__list">
               <div className="services-page__single">
                 <div className="services-page__icon">
                   <span className="icon-washing-machine"></span>
                 </div>
                 <h3 className="services-page__title">
-                  <a href="single-service.html">Washing Machine</a>
+                  <Link to={{ pathname: "/contact", state: { service: "Washing Machine Repair" } }}>
+                    Washing Machine Repair & service
+                  </Link>
                 </h3>
                 <p className="services-page__text">
                   New normal that has done evolved from generation is on the
-                  runway heading to wards a streamlined.
+                  runway heading towards a streamlined.
                 </p>
                 <div className="services-page__read-more">
-                  <a href="single-service.html">
-                  View Details <span>+</span>
-                  </a>
+                  <Link to="/contact" state={{ service: "Washing Machine Repair" }}>
+                    View Details <span>+</span>
+                  </Link>
                 </div>
               </div>
             </li>
-            {/* <!--Services Page Single End-->
-                    <!--Services Page Single Start--> */}
             <li className="services-page__list">
               <div className="services-page__single">
                 <div className="services-page__icon">
                   <span className="icon-oven"></span>
                 </div>
                 <h3 className="services-page__title">
-                  <a href="single-service.html">Microwave & Oven</a>
+                  <Link to="/contact" state= {{ service: "Microwave Oven Repair"  }}>
+                    Microwave Oven Repair & service
+                  </Link>
                 </h3>
                 <p className="services-page__text">
                   New normal that has done evolved from generation is on the
-                  runway heading to wards a streamlined.
+                  runway heading towards a streamlined.
                 </p>
                 <div className="services-page__read-more">
-                  <a href="single-service.html">
-                  View Details <span>+</span>
-                  </a>
+                <Link to="/contact" state= {{ service: "Microwave Oven Repair"  }}>
+                    View Details <span>+</span>
+                  </Link>
                 </div>
               </div>
             </li>
-            {/* <!--Services Page Single End-->
-                    <!--Services Page Single Start--> */}
             <li className="services-page__list">
               <div className="services-page__single">
                 <div className="services-page__icon">
                   <span className="icon-water-heater"></span>
                 </div>
                 <h3 className="services-page__title">
-                  <a href="single-service.html">Water Heater</a>
+                  <Link to="/contact" state= {{ service: "Water Heater Repair" }}>
+                    Water Heater Repair & service
+                  </Link>
                 </h3>
                 <p className="services-page__text">
                   New normal that has done evolved from generation is on the
-                  runway heading to wards a streamlined.
+                  runway heading towards a streamlined.
                 </p>
                 <div className="services-page__read-more">
-                  <a href="single-service.html">
-                  View Details <span>+</span>
-                  </a>
+                <Link to="/contact" state= {{ service: "Water Heater Repair" }}>
+                    View Details <span>+</span>
+                  </Link>
                 </div>
               </div>
             </li>
-            {/* <!--Services Page Single End-->
-                    <!--Services Page Single Start--> */}
             <li className="services-page__list">
               <div className="services-page__single">
                 <div className="services-page__icon">
                   <span className="icon-gas"></span>
                 </div>
                 <h3 className="services-page__title">
-                  <a href="single-service.html">Cookware Stove</a>
+                  <Link to="/contact"state={{ service: "Stove Repair"  }}>
+                    Cookware Stove Repair & service
+                  </Link>
                 </h3>
                 <p className="services-page__text">
                   New normal that has done evolved from generation is on the
-                  runway heading to wards a streamlined.
+                  runway heading towards a streamlined.
                 </p>
                 <div className="services-page__read-more">
-                  <a href="single-service.html">
-                  View Details <span>+</span>
-                  </a>
+                <Link to="/contact"state={{ service: "Stove Repair"  }}>
+                    View Details <span>+</span>
+                  </Link>
                 </div>
               </div>
             </li>
-            {/* <!--Services Page Single End-->
-                    <!--Services Page Single Start--> */}
             <li className="services-page__list">
               <div className="services-page__single">
                 <div className="services-page__icon">
                   <span className="icon-blender"></span>
                 </div>
                 <h3 className="services-page__title">
-                  <a href="single-service.html">Juicer Mixer</a>
+                  <Link to="/contact" state= {{ service: "Mixer Repair"  }}>
+                    Mixer Repair & service
+                  </Link>
                 </h3>
                 <p className="services-page__text">
                   New normal that has done evolved from generation is on the
-                  runway heading to wards a streamlined.
+                  runway heading towards a streamlined.
                 </p>
                 <div className="services-page__read-more">
-                  <a href="single-service.html">
-                  View Details <span>+</span>
-                  </a>
+                <Link to="/contact" state= {{ service: "Mixer Repair"  }}>
+                View Details <span>+</span>
+                  </Link>
                 </div>
               </div>
             </li>
-            {/* <!--Services Page Single End-->
-                    <!--Services Page Single Start--> */}
             <li className="services-page__list">
               <div className="services-page__single">
                 <div className="services-page__icon">
                   <span className="icon-ac"></span>
                 </div>
                 <h3 className="services-page__title">
-                  <a href="single-service.html">Air Conditioner</a>
+                  <Link to="/contact" state={{ service: "AC Repair" }}>
+                    AC Repair & Service
+                  </Link>
                 </h3>
                 <p className="services-page__text">
                   New normal that has done evolved from generation is on the
-                  runway heading to wards a streamlined.
+                  runway heading towards a streamlined.
                 </p>
                 <div className="services-page__read-more">
-                  <a href="single-service.html">
-                  View Details <span>+</span>
-                  </a>
+                <Link to="/contact" state={{ service: "AC Repair" }}>
+                View Details <span>+</span>
+                  </Link>
                 </div>
               </div>
             </li>
-            {/* <!--Services Page Single End-->
-                    <!--Services Page Single Start--> */}
             <li className="services-page__list">
               <div className="services-page__single">
                 <div className="services-page__icon">
-                  <img style={{height:'66px'}} src={tv} alt=""/>
+                  <img style={{ height: '66px' }} src={tv} alt="" />
                 </div>
                 <h3 className="services-page__title">
-                  <a href="single-service.html">Tv</a>
+                  <Link to="/contact" state={{ service: "TV Repair"  }}>
+                    T.V Repair & service
+                  </Link>
                 </h3>
                 <p className="services-page__text">
                   New normal that has done evolved from generation is on the
-                  runway heading to wards a streamlined.
+                  runway heading towards a streamlined.
                 </p>
                 <div className="services-page__read-more">
-                  <a href="single-service.html">
-                  View Details <span>+</span>
-                  </a>
+                <Link to="/contact" state={{ service: "TV Repair"  }}>
+                View Details <span>+</span>
+                  </Link>
                 </div>
               </div>
             </li>
-
             <li className="services-page__list">
               <div className="services-page__single">
                 <div className="services-page__icon">
-                  <img style={{height:'66px'}} src={gyser} alt=""/>
+                  <img style={{ height: '66px' }} src={gyser} alt="" />
                 </div>
                 <h3 className="services-page__title">
-                  <a href="single-service.html">Gyser</a>
+                  <Link to="/contact" state={{ service: "Geyser Repair"  }}>
+                    Geyser Repair & service
+                  </Link>
                 </h3>
                 <p className="services-page__text">
                   New normal that has done evolved from generation is on the
-                  runway heading to wards a streamlined.
+                  runway heading towards a streamlined.
                 </p>
                 <div className="services-page__read-more">
-                  <a href="single-service.html">
-                  View Details <span>+</span>
-                  </a>
+                <Link to="/contact" state={{ service: "Geyser Repair"  }}>
+                View Details <span>+</span>
+                  </Link>
                 </div>
               </div>
             </li>
-
             <li className="services-page__list">
               <div className="services-page__single">
                 <div className="services-page__icon">
-                  <img style={{height:'66px'}} src={Chimney} alt=""/>
+                  <img style={{ height: '66px' }} src={Chimney} alt="" />
                 </div>
                 <h3 className="services-page__title">
-                  <a href="single-service.html">Chimney</a>
+                  <Link to="/contact" state= {{ service: "Chimney Repair" }}>
+                    Chimney Repair & service
+                  </Link>
                 </h3>
                 <p className="services-page__text">
                   New normal that has done evolved from generation is on the
-                  runway heading to wards a streamlined.
+                  runway heading towards a streamlined.
                 </p>
                 <div className="services-page__read-more">
-                  <a href="single-service.html">
-                  View Details <span>+</span>
-                  </a>
+                <Link to="/contact" state= {{ service: "Chimney Repair" }}>
+                View Details <span>+</span>
+                  </Link>
                 </div>
               </div>
             </li>
-
-
             <li className="services-page__list">
               <div className="services-page__single">
                 <div className="services-page__icon">
-                  <img style={{height:'66px'}} src={RO} alt=""/>
+                  <img style={{ height: '66px' }} src={RO} alt="" />
                 </div>
                 <h3 className="services-page__title">
-                  <a href="single-service.html">R.O</a>
+                  <Link to="/contact" state={{ service: "R.O Water Purifier Repair"  }}>
+                    R.O Water Purifier Repair & service
+                  </Link>
                 </h3>
                 <p className="services-page__text">
                   New normal that has done evolved from generation is on the
-                  runway heading to wards a streamlined.
+                  runway heading towards a streamlined.
                 </p>
                 <div className="services-page__read-more">
-                  <a href="single-service.html">
-                  View Details <span>+</span>
-                  </a>
+                <Link to="/contact" state={{ service: "R.O Water Purifier Repair"  }}>
+                View Details <span>+</span>
+                  </Link>
                 </div>
               </div>
             </li>
-
-
-            {/* <!--Services Page Single End--> */}
           </ul>
           <div className="services-page__bottom">
             <div className="services-page__img float-bob-x">

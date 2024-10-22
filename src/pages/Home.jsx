@@ -272,14 +272,14 @@ function Home() {
                     </div>
                     <div className="services-one__title-box">
                       <h4 className="services-one__title">
-                        <a href="services.html">Refrigerator</a>
+                        <Link to="/services">Refrigerator</Link>
                       </h4>
                       <p className="services-one__sub-title">Service and Repairs</p>
                     </div>
                     <div className="services-one__read-more">
-                      <a href="services.html">
+                      <Link to="/services">
                       View Details <i className="fa fa-plus"></i>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </li>
@@ -291,14 +291,14 @@ function Home() {
                     </div>
                     <div className="services-one__title-box">
                       <h4 className="services-one__title">
-                        <a href="services.html">Washing Machine</a>
+                        <Link to="/services">Washing Machine</Link>
                       </h4>
                       <p className="services-one__sub-title">Service and Repairs</p>
                     </div>
                     <div className="services-one__read-more">
-                      <a href="services.html">
+                      <Link to="/services">
                       View Details<i className="fa fa-plus"></i>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </li>
@@ -310,14 +310,14 @@ function Home() {
                     </div>
                     <div className="services-one__title-box">
                       <h4 className="services-one__title">
-                        <a href="services.html">Microwave & Oven</a>
+                        <Link to="/services">Microwave & Oven</Link>
                       </h4>
                       <p className="services-one__sub-title">Service and Repairs</p>
                     </div>
                     <div className="services-one__read-more">
-                      <a href="services.html">
+                      <Link to="/services">
                       View Details <i className="fa fa-plus"></i>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </li>
@@ -329,14 +329,14 @@ function Home() {
                     </div>
                     <div className="services-one__title-box">
                       <h4 className="services-one__title">
-                        <a href="services.html">Water Heater</a>
+                        <Link to="/services">Water Heater</Link>
                       </h4>
                       <p className="services-one__sub-title">Service and Repairs</p>
                     </div>
                     <div className="services-one__read-more">
-                      <a href="services.html">
+                      <Link to="/services">
                       View Details<i className="fa fa-plus"></i>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </li>
@@ -348,14 +348,14 @@ function Home() {
                     </div>
                     <div className="services-one__title-box">
                       <h4 className="services-one__title">
-                        <a href="services.html">Cookware Stove</a>
+                        <Link to="/services">Cookware Stove</Link>
                       </h4>
                       <p className="services-one__sub-title">Service and Repairs</p>
                     </div>
                     <div className="services-one__read-more">
-                      <a href="services.html">
+                      <Link to="/services">
                       View Details<i className="fa fa-plus"></i>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </li>
@@ -367,14 +367,14 @@ function Home() {
                     </div>
                     <div className="services-one__title-box">
                       <h4 className="services-one__title">
-                        <a href="services.html">Juicer Mixer</a>
+                        <Link to="/services">Juicer Mixer</Link>
                       </h4>
                       <p className="services-one__sub-title">Service and Repairs</p>
                     </div>
                     <div className="services-one__read-more">
-                      <a href="services.html">
+                      <Link to="/services">
                       View Details <i className="fa fa-plus"></i>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </li>
@@ -386,14 +386,14 @@ function Home() {
                     </div>
                     <div className="services-one__title-box">
                       <h4 className="services-one__title">
-                        <a href="services.html">Air Conditioner</a>
+                        <Link to="/services">Air Conditioner</Link>
                       </h4>
                       <p className="services-one__sub-title">Service and Repairs</p>
                     </div>
                     <div className="services-one__read-more">
-                      <a href="services.html">
+                      <Link to="/services">
                       View Details <i className="fa fa-plus"></i>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </li>

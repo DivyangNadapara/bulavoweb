@@ -79,7 +79,7 @@ const AppContent = () => {
 
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 1500);
 
     return () => {
       clearTimeout(timer);
@@ -97,7 +97,7 @@ const AppContent = () => {
         <Route path="/about" element={<About />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/services" element={<Services />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/contact/" element={<Contact />} />
         <Route path="/singleservice" element={<Singleservice />} />
         <Route path="/blogs" element={<Blogs/>} />
         <Route path="/patner" element={<Patner />} />
