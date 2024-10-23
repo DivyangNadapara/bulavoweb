@@ -159,7 +159,7 @@ function Contact() {
               </p>
             </div>
             <div  className="row">
-              <div className="col-xl-8 col-lg-7">
+              <div  style={{padding:'30px',backgroundColor: 'rgb(241, 213, 81)',borderRadius:'12px'}} className="col-xl-8 col-lg-7">
                 <div className="contact-page__left">
                
                   <form onSubmit={handleSubmit} className="contact-page__form contact-form-validated">
@@ -167,6 +167,7 @@ function Contact() {
                       <div className="col-xl-6 col-lg-6 col-md-6">
                         <div className="contact-page__input-box">
                           <input
+                           style={{backgroundColor: 'rgb(245, 220, 105)',border: '1px solid #e1cc6b'}} 
                             type="text"
                             placeholder="Your name"
                             name="name"
@@ -179,6 +180,7 @@ function Contact() {
                       <div className="col-xl-6 col-lg-6 col-md-6">
                         <div className="contact-page__input-box">
                           <input
+                           style={{backgroundColor: 'rgb(245, 220, 105)',border: '1px solid #e1cc6b'}} 
                             type="email"
                             placeholder="Your email"
                             name="email"
@@ -191,6 +193,7 @@ function Contact() {
                       <div className="col-xl-6 col-lg-6 col-md-6">
                         <div className="contact-page__input-box">
                           <input
+                           style={{backgroundColor: 'rgb(245, 220, 105)',border: '1px solid #e1cc6b'}} 
                             type="text"
                             placeholder="Phone Number"
                             name="telnumber"
@@ -203,6 +206,7 @@ function Contact() {
                       <div className="col-xl-6 col-lg-6 col-md-6">
                         <div className="contact-page__input-box">
                           <input
+                           style={{backgroundColor: 'rgb(245, 220, 105)',border: '1px solid #e1cc6b'}} 
                             type="text"
                             placeholder="Alternative Phone Number"
                             name="altPhone"
@@ -218,6 +222,7 @@ function Contact() {
                       <div className="col-xl-6 col-lg-6 col-md-6">
                       <div className="contact-page__input-box">
                         <select
+                         style={{backgroundColor: 'rgb(245, 220, 105)',border: '1px solid #e1cc6b'}} 
                          required
                           name="services"
                           className="contact-page__dropdown"
@@ -246,6 +251,7 @@ function Contact() {
                       <div className="col-xl-12">
                         <div className="contact-page__input-box">
                           <input
+                           style={{backgroundColor: 'rgb(245, 220, 105)',border: '1px solid #e1cc6b'}} 
                             type="text"
                             placeholder="Address"
                             name="address"
@@ -256,6 +262,7 @@ function Contact() {
                         </div>
                         <div className="contact-page__input-box">
                           <input
+                           style={{backgroundColor: 'rgb(245, 220, 105)',border: '1px solid #e1cc6b'}} 
                             type="text"
                             placeholder="Pincode"
                             name="pincode"
@@ -266,6 +273,7 @@ function Contact() {
                         </div>
                         <div className="contact-page__input-box text-message-box">
                           <textarea
+                           style={{backgroundColor: 'rgb(245, 220, 105)',border: '1px solid #e1cc6b'}} 
                              type="text"
                             name="message"
                             placeholder="Your message"
@@ -349,6 +357,21 @@ function Contact() {
           <i className="fa fa-angle-up"></i>
         </a>
       </div>
+      <style jsx="true">{`
+   
+   contact-page__input-box .input::placeholder {
+    color: red !important; 
+
+}
+
+
+
+   
+}
+
+    
+    
+  `}</style>
     </>
   );
 }

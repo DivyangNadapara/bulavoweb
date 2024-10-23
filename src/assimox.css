@@ -8488,25 +8488,24 @@
   .contact-page__dropdown {
     height: 50px;
     width: 100%;
-    background-color: transparent;
+   
     padding-left: 20px;
     padding-right: 20px;
     outline: none;
     font-size: 18px;
-    color: #797979;
     display: block;
-    border: 1px solid #dddddd;
-    border-radius: 5px;
+   
+   
   }
   
   .contact-page__input-box textarea {
     font-size: 18px;
-    color: #797979;
+   
     height: 220px;
     width: 100%;
-    background-color: transparent;
+   
     padding: 18px 30px 30px;
-    border: 1px solid #dddddd;
+   
     border-radius: 5px;
     outline: none;
     margin-bottom: 0px;
