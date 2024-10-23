@@ -2,16 +2,18 @@ import Header from "../components/Header.jsx";
 import page from "../assets/images/backgrounds/page-header-bg-img.jpg";
 import Footer from "../components/footer/Footer.jsx";
 import { Link } from "react-router-dom";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from 'axios'; // Import Axios
 
-function blog() {
+function Blog() {
   const [blogs, setBlogs] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const blogsPerPage = 5; // Number of blogs per page
 
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get('https://bulavo-backend1-kohl.vercel.app/allblog');
+        const response = await axios.get('https://bulavo-backend1-kohl.vercel.app/blog/allblog');
         setBlogs(response.data); // Set the fetched data into state
       } catch (error) {
         console.error('Error fetching blogs:', error);
@@ -20,6 +22,19 @@ function blog() {
 
     fetchBlogs();
   }, []);
+
+  // Calculate indices for current blogs
+  const indexOfLastBlog = currentPage * blogsPerPage;
+  const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
+  const currentBlogs = blogs.slice(indexOfFirstBlog, indexOfLastBlog);
+  
+  // Calculate total number of pages
+  const totalPages = Math.ceil(blogs.length / blogsPerPage);
+
+  // Function to change page
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   return (
     <div className="page-wrapper">
@@ -52,59 +67,58 @@ function blog() {
       <div className="container">
         <div className="row">
           <div className="col-xl-8 col-lg-7">
-            {blogs.map((blog) => (
-              <div className="blog-grid__single" key={blog.id}>
-                <div className="blog-grid__img-box">
-                  <div className="blog-grid__img">
-                    <img src={blog.blogimage} alt={blog.blogtitle} />
-                  </div>
-                </div>
-                <div className="blog-grid__content-box">
-                  <div className="blog-grid__meta-box">
-                    <div className="blog-grid__date">
-                      <p>{new Date(blog.date).toLocaleDateString()}</p> {/* Assuming blog.date is in ISO format */}
-                    </div>
-                    <ul className="list-unstyled blog-grid__meta">
-                      <li>
-                        <a href="blog-details.html">By: {blog.author || 'Admin'}</a>
-                      </li>
-                      <li>
-                        <a href="blog-details.html">{blog.category || 'General'}</a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="blog-grid__content">
-                    <h3 className="blog-grid__title">
-                      <Link to={`/blog/${blog.id}`}>{blog.blogtitle}</Link> {/* Adjust link based on your routing */}
-                    </h3>
-                    <p className="blog-grid__text">{blog.blogdese}</p>
-                    <div className="blog-grid__btn-box">
-                      <Link to={`/blog/${blog.id}`} className="blog-grid__btn">
-                        View Details
-                      </Link>
+          {currentBlogs.map((blog) => (
+                <div className="blog-grid__single" key={blog.id}>
+                  <div className="blog-grid__img-box">
+                    <div className="blog-grid__img">
+                      <img src={blog.blogimage} alt={blog.blogtitle} />
                     </div>
                   </div>
+                  <div className="blog-grid__content-box">
+                    <div className="blog-grid__meta-box">
+                      <div className="blog-grid__date">
+                        <p>{new Date(blog.date).toLocaleDateString()}</p> {/* Assuming blog.date is in ISO format */}
+                      </div>
+                      <ul className="list-unstyled blog-grid__meta">
+                        <li>
+                          <a href="blog-details.html">By: {blog.author || 'Admin'}</a>
+                        </li>
+                        <li>
+                          <a href="blog-details.html">{blog.category || 'General'}</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div className="blog-grid__content">
+                      <h3 className="blog-grid__title">
+                        <Link to={`/blog/${blog.id}`}>{blog.blogtitle}</Link>
+                      </h3>
+                      <p className="blog-grid__text">{blog.blogdese}</p>
+                      <div className="blog-grid__btn-box">
+                        <Link to={`/blog/${blog.id}`} className="blog-grid__btn">
+                          View Details
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+              ))}
+         <div className="blog-page__pagination">
+                <ul className="pg-pagination list-unstyled">
+                  {Array.from({ length: totalPages }, (_, index) => (
+                    <li key={index + 1} className={currentPage === index + 1 ? 'active' : ''}>
+                      <a href="#" onClick={() => handlePageChange(index + 1)}>
+                        {index + 1}
+                      </a>
+                    </li>
+                  ))}
+                  <li className="next">
+                    <a href="#" onClick={() => handlePageChange(Math.min(currentPage + 1, totalPages))} aria-label="Next">
+                      <i className="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                </ul>
               </div>
-            ))}
-            <div className="blog-page__pagination">
-              <ul className="pg-pagination list-unstyled">
-                <li className="count">
-                  <a href="#">1</a>
-                </li>
-                <li className="count">
-                  <a href="#">2</a>
-                </li>
-                <li className="count">
-                  <a href="#">3</a>
-                </li>
-                <li className="next">
-                  <a href="#" aria-label="Next">
-                    <i className="fa fa-arrow-right"></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
+            
           </div>
           <div className="col-xl-4 col-lg-5">
             <div className="sidebar">
@@ -182,4 +196,4 @@ function blog() {
   );
 }
 
-export default blog;
+export default Blog;

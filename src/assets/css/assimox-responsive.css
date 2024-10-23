@@ -644,8 +644,23 @@
 
 /* Mobile Layout: 320px. */
 @media only screen and (max-width: 767px) {
+
+    .page-header {
+        display: none; /* Hides the page-header class on mobile screens */
+      }
+    
+      .section-title ,.text-left{
+        padding-top: 20px;
+      }
+
     .section-title__title {
-        font-size: 38px;
+        font-size: 20px;
+       
+        
+    }
+    .div{
+        margin-top: 45px;
+        margin-bottom: 10px;
     }
 
     .section-title__title br {

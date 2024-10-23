@@ -112,8 +112,8 @@ function About() {
                     crucial your appliances are to your daily routine, and we
                     are committed to providing efficient, effective solutions
                     that get you back up and running in no time. With a
-                    reputation built on trust, professionalism, and exceptional
-                    customer care, you can count on Bulavo to handle all your
+                    reputation built on trust, professionalism and exceptional
+                    customer care you can count on Bulavo to handle all your
                     appliance repair needs with expertise and integrity.
                   </h2>
                 </div>

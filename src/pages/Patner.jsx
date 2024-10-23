@@ -123,128 +123,162 @@ function Patner() {
         </div>
       </section>
       
-      <section className="partner-form">
-        <div className="container">
-          <form onSubmit={handleSubmit} className="form">
-            <div className="form-group">
-              <input
-                type="text"
-                name="name"
-                placeholder="Name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="form-group">
-              <input
-                type="email"
-                name="email"
-                placeholder="Email Address"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="form-group">
-              <input
-                type="tel"
-                name="telnumber"
-                placeholder="Phone Number"
-                value={formData.telnumber}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="form-group">
-              <input
-                type="text"
-                name="expertise"
-                placeholder="Which home appliance are you an expert in?"
-                value={formData.expertise}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="form-group file-upload">
-              <label style={{paddingLeft:'14px'}}>Upload your Aadhar Card Photo</label>
-              <input
-                type="file"
-                name="aadharimg"
-                accept="image/*"
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="form-group file-upload">
-              <label style={{paddingLeft:'14px'}}>Upload your Photo</label>
-              <input
-                type="file"
-                name="profileimg"
-                accept="image/*"
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <button type="submit" className="btn-submit">Submit</button>
-          </form>
+      <section  className="partner-form">
+  <div  className="container">
+    <div className="row">
+    <div className="col-lg-6 div">
+        <div className="join-text">
+         <span style={{paddingBottom:'10px'}} className="section-title__tagline">Why Join Bulavo Services</span>
+          <p>
+            At Bulavo Services, we value our technicians as the backbone of our operations. Joining our team means becoming part of a supportive community dedicated to excellence in service. We offer competitive pay, flexible hours, and opportunities for growth and development. Whether you're a seasoned professional or just starting your career, we provide the training and resources you need to succeed. Be part of a company that prioritizes integrity, quality, and customer satisfaction. Join us today and make a difference!
+          </p>
         </div>
-      </section>
+        <div style={{marginTop:'10px'}} className="join-text">
+         <span style={{paddingBottom:'10px'}} className="section-title__tagline">How To Join</span>
+          <p>
+          Please fill out the form, and we will get in touch with you shortly. Our team will reach out to you via phone to discuss 
+          </p>
+        </div>
+      </div>
+      <div  className="col-lg-6 ">
+        <form style={{ backgroundColor: 'rgb(241, 213, 81)'}} onSubmit={handleSubmit} className="form">
+          <div className="form-group">
+            <input
+              style={{backgroundColor: 'rgb(245, 220, 105)',border: '1px solid #e1cc6b'}}
+              type="text"
+              name="name"
+              placeholder="Name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <input
+  style={{backgroundColor: 'rgb(245, 220, 105)',border: '1px solid #e1cc6b'}} type="email"
+              name="email"
+              placeholder="Email Address"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <input
+  style={{backgroundColor: 'rgb(245, 220, 105)',border: '1px solid #e1cc6b'}}              type="tel"
+              name="telnumber"
+              placeholder="Phone Number"
+              value={formData.telnumber}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <input
+  style={{backgroundColor: 'rgb(245, 220, 105)',border: '1px solid #e1cc6b'}}              type="text"
+              name="expertise"
+              placeholder="Which home appliance are you an expert in?"
+              value={formData.expertise}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group file-upload">
+            <label style={{paddingLeft:'14px'}}>Upload your Aadhar Card Photo</label>
+            <input
+  style={{backgroundColor: 'rgb(245, 220, 105)',border: '1px solid #e1cc6b'}}              type="file"
+              name="aadharimg"
+              accept="image/*"
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group file-upload">
+            <label style={{paddingLeft:'14px'}}>Upload your Photo</label>
+            <input
+  style={{backgroundColor: 'rgb(245, 220, 105)',border: '1px solid #e1cc6b'}}              type="file"
+              name="profileimg"
+              accept="image/*"
+              onChange={handleChange}
+              required
+            />
+          </div>
+          
+                          <button type='submit'
+                            className='btn-submit'
+                          >
+                          Submit
+                          </button>
+                       
+        </form>
+      </div>
+    </div>
+  </div>
 
-      <style jsx="true">{`
-        .partner-form {
-          padding: 50px 0;
-          border-radius: 12px;
-        }
-        .form {
-          max-width: 600px;
-          margin: 0 auto;
-          background: white;
-          padding: 30px;
-          border-radius: 12px;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-        .form-group {
-          position: relative;
-          margin-bottom: 30px;
-        }
-        .form-group input {
-          width: 100%;
-          padding: 15px;
-          border: none;
-          border-bottom: 2px solid #ddd;
-          font-size: 16px;
-          transition: border-color 0.3s ease;
-        }
-        .form-group input:focus {
-          border-bottom: 2px solid #ff7e5f;
-          outline: none;
-        }
-        .form-group label {
-          margin-bottom: 5px;
-          font-size: 14px;
-          color: #555;
-          display: block;
-        }
-        .file-upload {
-          display: flex;
-          flex-direction: column;
-        }
-        .btn-submit {
-          background-color: black;
-          color: white;
-          padding: 15px 25px;
-          border: none;
-          border-radius: 30px;
-          cursor: pointer;
-          font-size: 18px;
-          transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-        .btn-submit:hover {
-          background-color: #feb47b;
-          transform: scale(1.05);
-        }
-      `}</style>
+  <style jsx="true">{`
+    .partner-form {
+      padding: 50px 0;
+      border-radius: 12px;
+    }
+    .form {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    .form-group {
+      position: relative;
+      margin-bottom: 30px;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-bottom: 2px solid #ddd;
+      font-size: 16px;
+      transition: border-color 0.3s ease;
+    }
+    .form-group input:focus {
+      border-bottom: 2px solid #ff7e5f;
+      outline: none;
+    }
+    .form-group label {
+      margin-bottom: 5px;
+      font-size: 14px;
+      color: #555;
+      display: block;
+    }
+    .file-upload {
+      display: flex;
+      flex-direction: column;
+    }
+    .btn-submit {
+      background-color: black;
+      color: white;
+      padding: 15px 25px;
+      border: none;
+      width: 100%;
+      cursor: pointer;
+      font-size: 18px;
+      
+    }
+   
+    .join-text {
+      padding: 30px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    .join-text h2 {
+      margin-bottom: 20px;
+    
+    }
+    
+  `}</style>
+</section>
+
       <Footer/>
     </div>
   );

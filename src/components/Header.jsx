@@ -81,7 +81,7 @@ const Header = () => {
                       style={getLinkStyle('/')}
                        aria-label="Open menu"
                     >
-                      <i className="fa fa-bars"></i>
+                      <i style={{color:'#f1d551'}}className="fa fa-bars"></i>
                     </a>
                     <ul className="main-menu__list">
                       {menuItems.map((item, index) => (

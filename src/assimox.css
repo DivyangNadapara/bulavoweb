@@ -7992,6 +7992,8 @@
     width: 100%;
     transition: all 200ms linear;
     transition-delay: 0.1s;
+    height: 200px; /* Set a fixed height */
+  object-fit: cover;
   }
   
   .blog-grid__single:hover .blog-grid__img img {

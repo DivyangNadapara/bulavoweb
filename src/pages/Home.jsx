@@ -1,9 +1,10 @@
 import Header from "../components/Header.jsx";
-import sliderBg from "../assets/images/backgrounds/main-slider-bg.webp";
+import sliderBg from "../assets/images/backgrounds/main-slider-bg-Photoroom.png";
 import sliderBg1 from "../assets/images/shapes/experience-and-rating-experience-shape-1.jpg";
 import sliderBg11 from "../assets/images/backgrounds/experience-and-rating-video-bg.jpg";
 import about from "../assets/images/resources/about-one-img-1.jpg";
 import why from "../assets/images/resources/why-choose-one-img-1.jpg";
+import why1 from "../assets/img/electronic.jpg";
 import contect from "../assets/images/icon/contact-bar-call-icon.png";
 import backgroundImage from "../assets/images/backgrounds/contact-bar-bg.jpg";
 import faq from "../assets/images/backgrounds/faq-one-bg.jpg";
@@ -166,7 +167,7 @@ function Home() {
                           className="main-slider__btn-box"
                           style={bottomLineStyle}
                         >
-                          <Link to="/about"
+                          <Link to="/contact"
                             className="thm-btn main-slider__btn"
                           >
                             Hire us now
@@ -382,6 +383,25 @@ function Home() {
                 <li className="services-one__list">
                   <div className="services-one__single">
                     <div className="services-one__icon">
+                      <span className="icon-blender"></span>
+                    </div>
+                    <div className="services-one__title-box">
+                      <h4 className="services-one__title">
+                        <Link to="/services">Juicer Mixer</Link>
+                      </h4>
+                      <p className="services-one__sub-title">Service and Repairs</p>
+                    </div>
+                    <div className="services-one__read-more">
+                      <Link to="/services">
+                      View Details <i className="fa fa-plus"></i>
+                      </Link>
+                    </div>
+                  </div>
+                </li>
+
+                <li className="services-one__list">
+                  <div className="services-one__single">
+                    <div className="services-one__icon">
                       <span className="icon-ac"></span>
                     </div>
                     <div className="services-one__title-box">
@@ -530,6 +550,9 @@ function Home() {
             </div>
           </div>
         </section>
+
+  
+
         <section className="why-choose-one">
           <div className="why-choose-one__img-1">
             <img src={why} alt="why choose" />
@@ -543,11 +566,11 @@ function Home() {
                     <h2 className="section-title__title">Our Advantages</h2>
                   </div>
                   <p className="why-choose-one__text">
-                    If you need to repair or replace your Plumbing system, call
-                    today and talk to one of our Plumbing specialists. They’ll
-                    answer all your questions and arrange an appointment at your
-                    convenience. If you need to repair or replace your Plumbing
-                    system call today and talk to one.
+                  If you need to repair or replace your home appliances, contact us today to speak with one of our specialists. They’re ready to answer all your questions and schedule an appointment at your convenience. Don’t hesitate—reach out today for expert assistance with your appliances!
+
+
+
+
                   </p>
                   <div className="why-choose-one__points-box">
                     <ul className="list-unstyled why-choose-one__points">
@@ -600,6 +623,9 @@ function Home() {
             </div>
           </div>
         </section>
+
+     
+
         {/* <!--Process Start--> */}
         <section className="process">
           <div className="container">
@@ -692,6 +718,10 @@ function Home() {
           </div>
         </section>
         {/* <!--Process End--> */}
+
+
+
+
 
         {/* <!--Contact Bar Start--> */}
         <section className="contact-bar">

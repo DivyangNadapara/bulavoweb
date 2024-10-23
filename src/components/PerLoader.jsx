@@ -1,17 +1,22 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 
 const PreLoader = () => {
+  const isAnimatingRef = useRef(false);
+
   useEffect(() => {
     const handlePreloader = () => {
       const loaderWrap = document.querySelector('.loader-wrap');
       
-      if (loaderWrap) {
+      // Only run animation if it hasn't started yet
+      if (loaderWrap && !isAnimatingRef.current) {
+        isAnimatingRef.current = true;
+        
         // Fade out loader after 1 second
         setTimeout(() => {
           gsap.to(loaderWrap, {
             duration: 1,
-         
+            opacity: 0,
             onComplete: () => {
               loaderWrap.style.display = 'none';
             }
@@ -22,7 +27,7 @@ const PreLoader = () => {
         gsap.to('.loader-wrap .overlay', {
           duration: 1.5,
           left: '100%',
-         
+          ease: 'power2.inOut',
           force3D: true
         });
       }
@@ -30,19 +35,24 @@ const PreLoader = () => {
 
     // Run the animation when component mounts
     handlePreloader();
+
+    // Cleanup function
+    return () => {
+      isAnimatingRef.current = false;
+    };
   }, []);
 
   return (
-    <div  className="loader-wrap">
-      <div  className="preloader">
-        <div  id="handle-preloader" className="handle-preloader">
+    <div className="loader-wrap">
+      <div className="preloader">
+        <div id="handle-preloader" className="handle-preloader">
           <div className="layer layer-one">
             <span className="overlay"></span>
           </div>
           <div className="layer layer-two">
             <span className="overlay"></span>
           </div>
-          <div style={{backgroundColor:'transparent !important'}}   className="layer layer-three">
+          <div  className="layer layer-three">
             <span className="overlay"></span>
           </div>
           <div className="animation-preloader">
@@ -61,9 +71,6 @@ const PreLoader = () => {
           </div>
         </div>
       </div>
-      <style>{`
- 
-      `}</style>
     </div>
   );
 };

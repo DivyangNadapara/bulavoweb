@@ -9,6 +9,8 @@ import gyser from "../assets/img/gyser.png";
 import Footer from "../components/footer/Footer.jsx";
 import Chimney from "../assets/img/Chimney.png";
 import RO from "../assets/img/R.O.png";
+import why from "../assets/images/resources/why-choose-one-img-1.jpg";
+
 function Services() {
   
   return (
@@ -286,6 +288,7 @@ function Services() {
               </div>
             </li>
           </ul>
+          
           <div className="services-page__bottom">
             <div className="services-page__img float-bob-x">
               <img src={service} alt="service" />
@@ -294,6 +297,9 @@ function Services() {
         </div>
       </section>
       {/* <!--Services Page End--> */}
+
+   
+
       {/* <!--Contact Bar Start--> */}
       <section className="contact-bar contact-bar-three">
         <div className="container">
@@ -338,6 +344,49 @@ function Services() {
           </div>
         </div>
       </section>
+         <section style={{marginBottom:'50px',marginTop:'-70px'}} className="why-choose-one">
+          <div className="why-choose-one__img-1">
+            <img src={why} alt="why choose" />
+          </div>
+          <div className="container">
+            <div className="row">
+              <div className="col-xl-7 col-lg-9">
+                <div className="why-choose-one__content">
+                  <div className="section-title text-left">
+                    <span className="section-title__tagline">why choose us</span>
+                    <h2 className="section-title__title">Our Advantages</h2>
+                  </div>
+                  <p className="why-choose-one__text">
+                  Are you a skilled technician looking for a rewarding career? Join our team and be part of a company that values expertise and dedication. We provide our technicians with ongoing training and support to ensure your success. If you're ready to take the next step in your career, we want to hear from you!
+                  </p>
+                  <div className="why-choose-one__points-box">
+                    <ul className="list-unstyled why-choose-one__points">
+                    
+                      <li>
+                        
+                      <div
+                          className="main-slider__btn-box"
+                          
+                        >
+                          <Link to="/patner"
+                            className="thm-btn main-slider__btn"
+                          >
+                           join our team
+                          </Link>
+                        </div>
+                      </li>
+                    </ul>
+                    <ul className="list-unstyled why-choose-one__points why-choose-one__points-two">
+                     
+                     
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
       {/* <!--Contact Bar End--> */}
       {/* <!--Site Footer Start--> */}
       <Footer />

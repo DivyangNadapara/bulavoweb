@@ -58,8 +58,8 @@
 import React, { useState, useEffect, Suspense, lazy } from 'react'; 
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import PerLoader from './components/PerLoader';
-import CustomCursor from './components/CustomCursor'; // Import the custom cursor
-
+import CustomCursor from './components/CustomCursor'; 
+import Popup from './components/Popup'; // Import the Popup component
 
 const Home = lazy(() => import('./pages/Home.jsx'));
 const About = lazy(() => import('./pages/About.jsx'));
@@ -72,44 +72,66 @@ const Patner = lazy(() => import('./pages/Patner.jsx'));
 
 const AppContent = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [showPopup, setShowPopup] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     setIsLoading(true);
-
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1500);
+    }, 2000);
 
     return () => {
       clearTimeout(timer);
     };
   }, [location.pathname]);
 
+  useEffect(() => {
+    const currentPath = location.pathname;
+    const isPopupClosed = localStorage.getItem(`popupClosed-${currentPath}`);
+
+    if (!isPopupClosed) {
+      const popupTimer = setTimeout(() => {
+        setShowPopup(true);
+      }, 10000); // Show popup after 10 seconds
+
+      return () => clearTimeout(popupTimer);
+    }
+  }, [location.pathname]); // Reset on path change
+
+  const handleClosePopup = () => {
+    const currentPath = location.pathname;
+    setShowPopup(false);
+    localStorage.setItem(`popupClosed-${currentPath}`, 'true'); // Store in local storage for the current path
+  };
+
   if (isLoading) {
     return <PerLoader />;
   }
 
   return (
-    <Suspense fallback={<PerLoader />}>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/contact/" element={<Contact />} />
-        <Route path="/singleservice" element={<Singleservice />} />
-        <Route path="/blogs" element={<Blogs/>} />
-        <Route path="/patner" element={<Patner />} />
-      </Routes>
-    </Suspense>
+    <>
+      {showPopup && <Popup onClose={handleClosePopup} />}
+      <Suspense fallback={<PerLoader />}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/contact/" element={<Contact />} />
+          <Route path="/singleservice" element={<Singleservice />} />
+          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/patner" element={<Patner />} />
+        </Routes>
+      </Suspense>
+    </>
   );
 };
 
 const App = () => {
   return (
     <Router>
-      <CustomCursor /> {/* Add the custom cursor here */}
+      <CustomCursor /> 
       <AppContent />
     </Router>
   );

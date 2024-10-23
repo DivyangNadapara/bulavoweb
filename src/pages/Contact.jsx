@@ -28,7 +28,7 @@ function Contact() {
     telnumber: /^\d{10}$/, // 10 digits
     altPhone: /^\d{10}$/, // 10 digits
     address: /^[A-Za-z0-9\s,.-]+$/, // Alphanumeric with spaces and some special chars
-    pincode: /^\d{5}$/, // 5 digits
+    pincode: /^\d{6}$/, // 5 digits
     message: /^.+$/, // Non-empty
   };
 
@@ -158,12 +158,12 @@ function Contact() {
                 promptly. Your satisfaction is our priority!
               </p>
             </div>
-            <div className="row">
+            <div  className="row">
               <div className="col-xl-8 col-lg-7">
                 <div className="contact-page__left">
                
                   <form onSubmit={handleSubmit} className="contact-page__form contact-form-validated">
-                    <div className="row">
+                    <div  className="row">
                       <div className="col-xl-6 col-lg-6 col-md-6">
                         <div className="contact-page__input-box">
                           <input
