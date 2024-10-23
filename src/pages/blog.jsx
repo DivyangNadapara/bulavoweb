@@ -5,24 +5,41 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from 'axios'; // Import Axios
 
+// Loading state
+
 function Blog() {
+  
   const [blogs, setBlogs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const blogsPerPage = 5; // Number of blogs per page
+  const [loading, setLoading] = useState(true); 
+  
 
   useEffect(() => {
     const fetchBlogs = async () => {
+      setLoading(true); 
       try {
         const response = await axios.get('https://bulavo-backend1-kohl.vercel.app/blog/allblog');
-        setBlogs(response.data); // Set the fetched data into state
+        const blogsWithFormattedDates = response.data.map(blog => ({
+          ...blog,
+          formattedDate: new Date(blog.createdAt).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          }), // Customize the date format as needed
+        }));
+        setLoading(false); 
+        setBlogs(blogsWithFormattedDates);
       } catch (error) {
         console.error('Error fetching blogs:', error);
+        setLoading(false); // End loading
       }
     };
-
+  
     fetchBlogs();
   }, []);
-
+  
+ 
   // Calculate indices for current blogs
   const indexOfLastBlog = currentPage * blogsPerPage;
   const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
@@ -67,7 +84,10 @@ function Blog() {
       <div className="container">
         <div className="row">
           <div className="col-xl-8 col-lg-7">
-          {currentBlogs.map((blog) => (
+             {loading ? (
+                <div className="loading-message">Loading...</div> // Show loading message
+              ) : (
+          currentBlogs.map((blog) => (
                 <div className="blog-grid__single" key={blog.id}>
                   <div className="blog-grid__img-box">
                     <div className="blog-grid__img">
@@ -77,7 +97,7 @@ function Blog() {
                   <div className="blog-grid__content-box">
                     <div className="blog-grid__meta-box">
                       <div className="blog-grid__date">
-                        <p>{new Date(blog.date).toLocaleDateString()}</p> {/* Assuming blog.date is in ISO format */}
+                        <p>{blog.formattedDate}</p> {/* Assuming blog.date is in ISO format */}
                       </div>
                       <ul className="list-unstyled blog-grid__meta">
                         <li>
@@ -101,7 +121,8 @@ function Blog() {
                     </div>
                   </div>
                 </div>
-              ))}
+             ) ))}
+            
          <div className="blog-page__pagination">
                 <ul className="pg-pagination list-unstyled">
                   {Array.from({ length: totalPages }, (_, index) => (

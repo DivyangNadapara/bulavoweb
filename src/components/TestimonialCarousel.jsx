@@ -69,7 +69,7 @@ const TestimonialCarousel = () => {
 
       <div className="container">
         <div className="section-header">
-          <h2>What Our Clients Say</h2>
+          <h2 style={{color:"white"}}>What Our Clients Say</h2>
           <div className="underline"></div>
         </div>
 

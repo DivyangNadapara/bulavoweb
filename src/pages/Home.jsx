@@ -4,6 +4,7 @@ import sliderBg1 from "../assets/images/shapes/experience-and-rating-experience-
 import sliderBg11 from "../assets/images/backgrounds/experience-and-rating-video-bg.jpg";
 import about from "../assets/images/resources/about-one-img-1.jpg";
 import why from "../assets/images/resources/why-choose-one-img-1.jpg";
+import tv from "../assets/img/image.webp";
 import why1 from "../assets/img/electronic.jpg";
 import contect from "../assets/images/icon/contact-bar-call-icon.png";
 import backgroundImage from "../assets/images/backgrounds/contact-bar-bg.jpg";
@@ -17,6 +18,7 @@ import Odometer from "odometer";
 import "odometer/themes/odometer-theme-default.css";
 import Footer from "../components/footer/Footer.jsx";
 import { Link } from "react-router-dom";
+
 function Home() {
   const odometerRef = useRef(null);
   const [animate, setAnimate] = useState(false);
@@ -380,24 +382,7 @@ function Home() {
                   </div>
                 </li>
 
-                <li className="services-one__list">
-                  <div className="services-one__single">
-                    <div className="services-one__icon">
-                      <span className="icon-blender"></span>
-                    </div>
-                    <div className="services-one__title-box">
-                      <h4 className="services-one__title">
-                        <Link to="/services">Juicer Mixer</Link>
-                      </h4>
-                      <p className="services-one__sub-title">Service and Repairs</p>
-                    </div>
-                    <div className="services-one__read-more">
-                      <Link to="/services">
-                      View Details <i className="fa fa-plus"></i>
-                      </Link>
-                    </div>
-                  </div>
-                </li>
+                
 
                 <li className="services-one__list">
                   <div className="services-one__single">
@@ -417,6 +402,25 @@ function Home() {
                     </div>
                   </div>
                 </li>
+                <li className="services-one__list">
+                  <div className="services-one__single">
+                    <div className="services-one__icon">
+                      <img src={tv} style={{height:"66px"}}></img>
+                    </div>
+                    <div className="services-one__title-box">
+                      <h4 className="services-one__title">
+                        <Link to="/services">TV</Link>
+                      </h4>
+                      <p className="services-one__sub-title">Service and Repairs</p>
+                    </div>
+                    <div className="services-one__read-more">
+                      <Link to="/services">
+                      View Details <i className="fa fa-plus"></i>
+                      </Link>
+                    </div>
+                  </div>
+                </li>
+
                 <li className="services-one__list"></li>
               </ul>
             </div>

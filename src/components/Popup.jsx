@@ -26,7 +26,7 @@ useEffect(() => {
       document.head.removeChild(styleSheet);
     };
   }, []);
-  
+
   const [selectedService, setSelectedService] = useState("");
   const [formData, setFormData] = useState({
     name: "",
@@ -168,7 +168,7 @@ useEffect(() => {
   height: '100%',
   backgroundColor: 'rgba(0, 0, 0, 0.5)',
   backdropFilter: 'blur(5px)',
-  zIndex: 999,
+  zIndex: 9999,
   opacity: 1,
   transition: 'opacity 0.3s ease-in-out', // Add this line
 }} onClick={onClose}></div>
