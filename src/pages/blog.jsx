@@ -110,11 +110,11 @@ function Blog() {
                     </div>
                     <div className="blog-grid__content">
                       <h3 className="blog-grid__title">
-                        <Link to={`/blog/${blog.id}`}>{blog.blogtitle}</Link>
+                        <Link to='/blogs'>{blog.blogtitle}</Link>
                       </h3>
                       <p className="blog-grid__text">{blog.blogdese}</p>
                       <div className="blog-grid__btn-box">
-                        <Link to={`/blog/${blog.id}`} className="blog-grid__btn">
+                        <Link to='/blogs' className="blog-grid__btn">
                           View Details
                         </Link>
                       </div>
@@ -140,52 +140,6 @@ function Blog() {
                 </ul>
               </div>
             
-          </div>
-          <div className="col-xl-4 col-lg-5">
-            <div className="sidebar">
-              <div className="sidebar__single sidebar__category">
-                <h3 className="sidebar__title">Categories</h3>
-                <ul className="sidebar__category-list list-unstyled">
-                  <li>
-                    <a href="blog-details.html">
-                      Home Construction
-                      <span className="fas fa-angle-right"></span>
-                    </a>
-                  </li>
-                  <li className="active">
-                    <a href="blog-details.html">
-                      General Construction
-                      <span className="fas fa-angle-right"></span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="blog-details.html">
-                      Roof Renovation
-                      <span className="fas fa-angle-right"></span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="blog-details.html">
-                      Company Profile
-                      <span className="fas fa-angle-right"></span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="blog-details.html">
-                      Construction Projects
-                      <span className="fas fa-angle-right"></span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="blog-details.html">
-                      Roof Gutter
-                      <span className="fas fa-angle-right"></span>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              {/* Add the recent news and tags as needed */}
-            </div>
           </div>
         </div>
       </div>

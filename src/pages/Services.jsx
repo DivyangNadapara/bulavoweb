@@ -72,7 +72,7 @@ function Services() {
                 </p>
                 <div className="services-page__read-more">
                   <Link to="/contact" state={{ service: "Refrigerator Repair"}}>
-                    View Details <span>+</span>
+                    book service  
                   </Link>
                 </div>
               </div>
@@ -93,7 +93,7 @@ function Services() {
                 </p>
                 <div className="services-page__read-more">
                   <Link to="/contact" state={{ service: "Washing Machine Repair" }}>
-                    View Details <span>+</span>
+                    book service  
                   </Link>
                 </div>
               </div>
@@ -114,7 +114,7 @@ function Services() {
                 </p>
                 <div className="services-page__read-more">
                 <Link to="/contact" state= {{ service: "Microwave Oven Repair"  }}>
-                    View Details <span>+</span>
+                    book service  
                   </Link>
                 </div>
               </div>
@@ -135,7 +135,7 @@ function Services() {
                 </p>
                 <div className="services-page__read-more">
                 <Link to="/contact" state= {{ service: "Water Heater Repair" }}>
-                    View Details <span>+</span>
+                    book service  
                   </Link>
                 </div>
               </div>
@@ -156,7 +156,7 @@ function Services() {
                 </p>
                 <div className="services-page__read-more">
                 <Link to="/contact"state={{ service: "Stove Repair"  }}>
-                    View Details <span>+</span>
+                    book service 
                   </Link>
                 </div>
               </div>
@@ -177,7 +177,7 @@ function Services() {
                 </p>
                 <div className="services-page__read-more">
                 <Link to="/contact" state= {{ service: "Mixer Repair"  }}>
-                View Details <span>+</span>
+                book service  
                   </Link>
                 </div>
               </div>
@@ -198,7 +198,7 @@ function Services() {
                 </p>
                 <div className="services-page__read-more">
                 <Link to="/contact" state={{ service: "AC Repair" }}>
-                View Details <span>+</span>
+                book service  
                   </Link>
                 </div>
               </div>
@@ -219,7 +219,7 @@ function Services() {
                 </p>
                 <div className="services-page__read-more">
                 <Link to="/contact" state={{ service: "TV Repair"  }}>
-                View Details <span>+</span>
+                book service 
                   </Link>
                 </div>
               </div>
@@ -240,7 +240,7 @@ function Services() {
                 </p>
                 <div className="services-page__read-more">
                 <Link to="/contact" state={{ service: "Geyser Repair"  }}>
-                View Details <span>+</span>
+                book service  
                   </Link>
                 </div>
               </div>
@@ -261,7 +261,7 @@ function Services() {
                 </p>
                 <div className="services-page__read-more">
                 <Link to="/contact" state= {{ service: "Chimney Repair" }}>
-                View Details <span>+</span>
+                book service 
                   </Link>
                 </div>
               </div>
@@ -282,7 +282,7 @@ function Services() {
                 </p>
                 <div className="services-page__read-more">
                 <Link to="/contact" state={{ service: "R.O Water Purifier Repair"  }}>
-                View Details <span>+</span>
+                book service  
                   </Link>
                 </div>
               </div>

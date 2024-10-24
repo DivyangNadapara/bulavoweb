@@ -1,5 +1,5 @@
 import Header from "../components/Header.jsx";
-import sliderBg from "../assets/images/backgrounds/main-slider-bg-Photoroom.png";
+import sliderBg from "../assets/images/backgrounds/main-slider-bg.webp";
 import sliderBg1 from "../assets/images/shapes/experience-and-rating-experience-shape-1.jpg";
 import sliderBg11 from "../assets/images/backgrounds/experience-and-rating-video-bg.jpg";
 import about from "../assets/images/resources/about-one-img-1.jpg";
@@ -275,13 +275,13 @@ function Home() {
                     </div>
                     <div className="services-one__title-box">
                       <h4 className="services-one__title">
-                        <Link to="/services">Refrigerator</Link>
+                        <Link to="/contact" state={{ service: "Refrigerator Repair" }} >Refrigerator</Link>
                       </h4>
                       <p className="services-one__sub-title">Service and Repairs</p>
                     </div>
                     <div className="services-one__read-more">
-                      <Link to="/services">
-                      View Details <i className="fa fa-plus"></i>
+                      <Link to="/contact" state={{ service: "Refrigerator Repair" }}  >
+                      book service 
                       </Link>
                     </div>
                   </div>
@@ -294,13 +294,13 @@ function Home() {
                     </div>
                     <div className="services-one__title-box">
                       <h4 className="services-one__title">
-                        <Link to="/services">Washing Machine</Link>
+                      <Link to="/contact"  state={{ service: "Washing Machine Repair" }}>Washing Machine</Link>
                       </h4>
                       <p className="services-one__sub-title">Service and Repairs</p>
                     </div>
                     <div className="services-one__read-more">
-                      <Link to="/services">
-                      View Details<i className="fa fa-plus"></i>
+                      <Link to="/contact"  state={{ service: "Washing Machine Repair" }}>
+                      book service 
                       </Link>
                     </div>
                   </div>
@@ -313,13 +313,13 @@ function Home() {
                     </div>
                     <div className="services-one__title-box">
                       <h4 className="services-one__title">
-                        <Link to="/services">Microwave & Oven</Link>
+                        <Link to="/contact" state= {{ service: "Microwave Oven Repair"  }} >Microwave & Oven</Link>
                       </h4>
                       <p className="services-one__sub-title">Service and Repairs</p>
                     </div>
                     <div className="services-one__read-more">
-                      <Link to="/services">
-                      View Details <i className="fa fa-plus"></i>
+                      <Link to="/contact" state= {{ service: "Microwave Oven Repair"  }} >
+                      book service  
                       </Link>
                     </div>
                   </div>
@@ -332,13 +332,13 @@ function Home() {
                     </div>
                     <div className="services-one__title-box">
                       <h4 className="services-one__title">
-                        <Link to="/services">Water Heater</Link>
+                        <Link to="/contact" state= {{ service: "Water Heater Repair" }} >Water Heater</Link>
                       </h4>
                       <p className="services-one__sub-title">Service and Repairs</p>
                     </div>
                     <div className="services-one__read-more">
-                      <Link to="/services">
-                      View Details<i className="fa fa-plus"></i>
+                      <Link to="/contact" state= {{ service: "Water Heater Repair" }} >
+                      book service 
                       </Link>
                     </div>
                   </div>
@@ -351,13 +351,13 @@ function Home() {
                     </div>
                     <div className="services-one__title-box">
                       <h4 className="services-one__title">
-                        <Link to="/services">Cookware Stove</Link>
+                        <Link to="/contact" state={{ service: "Stove Repair"  }} >Cookware Stove</Link>
                       </h4>
                       <p className="services-one__sub-title">Service and Repairs</p>
                     </div>
                     <div className="services-one__read-more">
-                      <Link to="/services">
-                      View Details<i className="fa fa-plus"></i>
+                      <Link to="/contact" state={{ service: "Stove Repair"  }} >
+                      book service 
                       </Link>
                     </div>
                   </div>
@@ -370,13 +370,13 @@ function Home() {
                     </div>
                     <div className="services-one__title-box">
                       <h4 className="services-one__title">
-                        <Link to="/services">Juicer Mixer</Link>
+                        <Link to="/contact" state= {{ service: "Mixer Repair"  }} >Juicer Mixer</Link>
                       </h4>
                       <p className="services-one__sub-title">Service and Repairs</p>
                     </div>
                     <div className="services-one__read-more">
-                      <Link to="/services">
-                      View Details <i className="fa fa-plus"></i>
+                      <Link to="/contact"  state= {{ service: "Mixer Repair"  }} >
+                      book service  
                       </Link>
                     </div>
                   </div>
@@ -391,13 +391,13 @@ function Home() {
                     </div>
                     <div className="services-one__title-box">
                       <h4 className="services-one__title">
-                        <Link to="/services">Air Conditioner</Link>
+                        <Link to="/contact" state={{ service: "AC Repair" }} >Air Conditioner</Link>
                       </h4>
                       <p className="services-one__sub-title">Service and Repairs</p>
                     </div>
                     <div className="services-one__read-more">
-                      <Link to="/services">
-                      View Details <i className="fa fa-plus"></i>
+                      <Link to="/contact" state={{ service: "AC Repair" }} >
+                      book service 
                       </Link>
                     </div>
                   </div>
@@ -409,13 +409,13 @@ function Home() {
                     </div>
                     <div className="services-one__title-box">
                       <h4 className="services-one__title">
-                        <Link to="/services">TV</Link>
+                        <Link to="/contact" state={{ service: "TV Repair"  }} >TV</Link>
                       </h4>
                       <p className="services-one__sub-title">Service and Repairs</p>
                     </div>
                     <div className="services-one__read-more">
-                      <Link to="/services">
-                      View Details <i className="fa fa-plus"></i>
+                      <Link to="/contact" state={{ service: "TV Repair"  }} >
+                      book service  
                       </Link>
                     </div>
                   </div>
@@ -653,7 +653,7 @@ function Home() {
                     <p className="process__sub-title">First Steop of Process</p>
                   </div>
                   <p className="process__text">
-                    Perspiciatis unde omnis iste natus error voluptatem
+                   Fill form or call us we heard your request as soon as possible
                   </p>
                 </div>
               </div>
@@ -673,7 +673,7 @@ function Home() {
                     <p className="process__sub-title">Second Steop of Process</p>
                   </div>
                   <p className="process__text">
-                    Perspiciatis unde omnis iste natus error voluptatem
+                    We will assign best technician for your problem
                   </p>
                 </div>
               </div>
@@ -693,7 +693,7 @@ function Home() {
                     <p className="process__sub-title">Third Steop of Process</p>
                   </div>
                   <p className="process__text">
-                    Perspiciatis unde omnis iste natus error voluptatem
+                    our 
                   </p>
                 </div>
               </div>

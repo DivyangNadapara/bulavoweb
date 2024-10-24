@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify'; // Import Toastify components
-import 'react-toastify/dist/ReactToastify.css'; // Import Toastify styles
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify"; // Import Toastify components
+import "react-toastify/dist/ReactToastify.css"; // Import Toastify styles
 import Header from "../components/Header.jsx";
 import page from "../assets/images/backgrounds/page-header-bg-img.jpg";
 import Footer from "../components/footer/Footer.jsx";
 
-
 function Contact() {
   const location = useLocation();
   const [selectedService, setSelectedService] = useState("");
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -42,9 +42,10 @@ function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent default form submission
-    
-    const { name, email, telnumber, altPhone, address, pincode, message } = formData;
-    
+
+    const { name, email, telnumber, altPhone, address, pincode, message } =
+      formData;
+
     // Validate each field
     if (!regexPatterns.name.test(name)) {
       toast.error("Invalid name. Only letters and spaces are allowed.");
@@ -63,7 +64,9 @@ function Contact() {
       return;
     }
     if (!regexPatterns.address.test(address)) {
-      toast.error("Address can only contain letters, numbers, and basic punctuation.");
+      toast.error(
+        "Address can only contain letters, numbers, and basic punctuation."
+      );
       return;
     }
     if (!regexPatterns.pincode.test(pincode)) {
@@ -79,9 +82,12 @@ function Contact() {
       ...formData,
       service: selectedService,
     };
-
+    setLoading(true); // Start loading
     try {
-      const response = await axios.post("https://bulavo-backend1-kohl.vercel.app/bookservice", dataToSubmit);
+      const response = await axios.post(
+        "https://bulavo-backend1-kohl.vercel.app/bookservice",
+        dataToSubmit
+      );
 
       // Check if the response is successful
       if (response.status !== 201) {
@@ -102,11 +108,12 @@ function Contact() {
         message: "",
       });
       setSelectedService("");
-
     } catch (error) {
       console.error("Error submitting form:", error);
       // Show error toast
       toast.error("Error submitting form. Please try again.");
+    } finally {
+      setLoading(false); // Stop loading
     }
   };
 
@@ -115,8 +122,6 @@ function Contact() {
       setSelectedService(location.state.service);
     }
   }, [location.state]);
-
-
 
   return (
     <>
@@ -158,16 +163,29 @@ function Contact() {
                 promptly. Your satisfaction is our priority!
               </p>
             </div>
-            <div  className="row">
-              <div  style={{padding:'30px',backgroundColor: 'rgb(241, 213, 81)',borderRadius:'12px'}} className="col-xl-8 col-lg-7">
+            <div className="row">
+              <div 
+                style={{
+                  padding: "30px",
+                  backgroundColor: "rgb(241, 213, 81)",
+                  borderRadius: "12px",
+                  filter: loading ? 'blur(3px)' : 'none',
+                }}
+                className="col-xl-8 col-lg-7"
+              >
                 <div className="contact-page__left">
-               
-                  <form onSubmit={handleSubmit} className="contact-page__form contact-form-validated">
-                    <div  className="row">
+                  <form
+                    onSubmit={handleSubmit}
+                    className="contact-page__form contact-form-validated"
+                  >
+                    <div className="row">
                       <div className="col-xl-6 col-lg-6 col-md-6">
                         <div className="contact-page__input-box">
                           <input
-                           style={{backgroundColor: 'rgb(245, 220, 105)',border: '1px solid #e1cc6b'}} 
+                            style={{
+                              backgroundColor: "rgb(245, 220, 105)",
+                              border: "1px solid #e1cc6b",
+                            }}
                             type="text"
                             placeholder="Your name"
                             name="name"
@@ -180,7 +198,10 @@ function Contact() {
                       <div className="col-xl-6 col-lg-6 col-md-6">
                         <div className="contact-page__input-box">
                           <input
-                           style={{backgroundColor: 'rgb(245, 220, 105)',border: '1px solid #e1cc6b'}} 
+                            style={{
+                              backgroundColor: "rgb(245, 220, 105)",
+                              border: "1px solid #e1cc6b",
+                            }}
                             type="email"
                             placeholder="Your email"
                             name="email"
@@ -193,7 +214,10 @@ function Contact() {
                       <div className="col-xl-6 col-lg-6 col-md-6">
                         <div className="contact-page__input-box">
                           <input
-                           style={{backgroundColor: 'rgb(245, 220, 105)',border: '1px solid #e1cc6b'}} 
+                            style={{
+                              backgroundColor: "rgb(245, 220, 105)",
+                              border: "1px solid #e1cc6b",
+                            }}
                             type="text"
                             placeholder="Phone Number"
                             name="telnumber"
@@ -206,7 +230,10 @@ function Contact() {
                       <div className="col-xl-6 col-lg-6 col-md-6">
                         <div className="contact-page__input-box">
                           <input
-                           style={{backgroundColor: 'rgb(245, 220, 105)',border: '1px solid #e1cc6b'}} 
+                            style={{
+                              backgroundColor: "rgb(245, 220, 105)",
+                              border: "1px solid #e1cc6b",
+                            }}
                             type="text"
                             placeholder="Alternative Phone Number"
                             name="altPhone"
@@ -218,40 +245,59 @@ function Contact() {
                       </div>
                     </div>
                     <div className="row">
-                     
                       <div className="col-xl-6 col-lg-6 col-md-6">
-                      <div className="contact-page__input-box">
-                        <select
-                         style={{backgroundColor: 'rgb(245, 220, 105)',border: '1px solid #e1cc6b'}} 
-                         required
-                          name="services"
-                          className="contact-page__dropdown"
-                          value={selectedService}
+                        <div className="contact-page__input-box">
+                          <select
+                            style={{
+                              backgroundColor: "rgb(245, 220, 105)",
+                              border: "1px solid #e1cc6b",
+                            }}
+                            required
+                            name="services"
+                            className="contact-page__dropdown"
+                            value={selectedService}
                             onChange={(e) => setSelectedService(e.target.value)}
-                         >
-                          <option value="" disabled>
-                            Select a service
-                          </option>
-                          <option value="Refrigerator Repair">Refrigerator Repair</option>
-                          <option value="Washing Machine Repair">Washing Machine Repair</option>
-                          <option value="Microwave Oven Repair">Microwave Oven Repair</option>
-                          <option value="Water Heater Repair">Water Heater Repair</option>
-                          <option value="Stove Repair">Cookware Stove Repair</option>
-                          <option value="Mixer Repair">Mixer Repair</option>
-                          <option value="AC Repair">AC Repair</option>
-                          <option value="TV Repair">TV Repair</option>
-                          <option value="Geyser Repair">Geyser Repair</option>
-                          <option value="Chimney Repair">Chimney Repair</option>
-                          <option value="R.O Water Purifier Repair">R.O Water Purifier Repair</option>
-                        </select>
-                      </div>
+                          >
+                            <option value="" disabled>
+                              Select a service
+                            </option>
+                            <option value="Refrigerator Repair">
+                              Refrigerator Repair
+                            </option>
+                            <option value="Washing Machine Repair">
+                              Washing Machine Repair
+                            </option>
+                            <option value="Microwave Oven Repair">
+                              Microwave Oven Repair
+                            </option>
+                            <option value="Water Heater Repair">
+                              Water Heater Repair
+                            </option>
+                            <option value="Stove Repair">
+                              Cookware Stove Repair
+                            </option>
+                            <option value="Mixer Repair">Mixer Repair</option>
+                            <option value="AC Repair">AC Repair</option>
+                            <option value="TV Repair">TV Repair</option>
+                            <option value="Geyser Repair">Geyser Repair</option>
+                            <option value="Chimney Repair">
+                              Chimney Repair
+                            </option>
+                            <option value="R.O Water Purifier Repair">
+                              R.O Water Purifier Repair
+                            </option>
+                          </select>
+                        </div>
                       </div>
                     </div>
                     <div className="row">
                       <div className="col-xl-12">
                         <div className="contact-page__input-box">
                           <input
-                           style={{backgroundColor: 'rgb(245, 220, 105)',border: '1px solid #e1cc6b'}} 
+                            style={{
+                              backgroundColor: "rgb(245, 220, 105)",
+                              border: "1px solid #e1cc6b",
+                            }}
                             type="text"
                             placeholder="Address"
                             name="address"
@@ -262,7 +308,10 @@ function Contact() {
                         </div>
                         <div className="contact-page__input-box">
                           <input
-                           style={{backgroundColor: 'rgb(245, 220, 105)',border: '1px solid #e1cc6b'}} 
+                            style={{
+                              backgroundColor: "rgb(245, 220, 105)",
+                              border: "1px solid #e1cc6b",
+                            }}
                             type="text"
                             placeholder="Pincode"
                             name="pincode"
@@ -273,8 +322,11 @@ function Contact() {
                         </div>
                         <div className="contact-page__input-box text-message-box">
                           <textarea
-                           style={{backgroundColor: 'rgb(245, 220, 105)',border: '1px solid #e1cc6b'}} 
-                             type="text"
+                            style={{
+                              backgroundColor: "rgb(245, 220, 105)",
+                              border: "1px solid #e1cc6b",
+                            }}
+                            type="text"
                             name="message"
                             placeholder="Your message"
                             value={formData.message}
@@ -282,14 +334,17 @@ function Contact() {
                             required
                           ></textarea>
                         </div>
-                        <div className="contact-page__btn-box">
-                          <button 
+                        <div className="">
+                          <button
+                            style={{
+                              width: "100%",
+                              height: "50px",
+                              backgroundColor: "black",
+                              color: "white",
+                            }}
                             type="submit"
-                            className="thm-btn contact-page__btn"
-                           
                           >
-                            Hire us now
-                           
+                            {loading ? "Loading..." : "Hire us now"}
                           </button>
                         </div>
                       </div>
@@ -300,7 +355,9 @@ function Contact() {
               <div className="col-xl-4 col-lg-5">
                 <div className="contact-page__right">
                   <div className="contact-page__content">
-                    <h3 className="contact-page__content-title">Bulavo Workshop</h3>
+                    <h3 className="contact-page__content-title">
+                      Bulavo Workshop
+                    </h3>
                     <p className="contact-page__text">
                       GF-001 Mayuransh elanza shyamal cross road,
                       <br />
@@ -310,7 +367,9 @@ function Contact() {
                       <a href="mailto:contact@bulavo.com">contact@bulavo.com</a>
                     </h4>
                     <div className="contact-page__call-box">
-                      <p className="contact-page__call-sub-title">Call Us at :</p>
+                      <p className="contact-page__call-sub-title">
+                        Call Us at :
+                      </p>
                       <h4 className="contact-page__call-number">
                         <a href="tel:+9328939099">+91 9328939099</a>
                       </h4>
@@ -358,20 +417,12 @@ function Contact() {
         </a>
       </div>
       <style jsx="true">{`
-   
-   contact-page__input-box .input::placeholder {
-    color: red !important; 
-
-}
-
-
-
-   
-}
-
-    
-    
-  `}</style>
+      form input:-webkit-autofill,
+      select:-webkit-autofill !important{
+      background-color: #fffff !important ;
+      color: red !important;
+      }
+      `}</style>
     </>
   );
 }
