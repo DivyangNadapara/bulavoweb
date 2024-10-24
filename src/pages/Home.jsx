@@ -1,5 +1,5 @@
 import Header from "../components/Header.jsx";
-import sliderBg from "../assets/images/backgrounds/main-slider-bg.webp";
+import sliderBg from "../assets/images/backgrounds/2210.jpg";
 import sliderBg1 from "../assets/images/shapes/experience-and-rating-experience-shape-1.jpg";
 import sliderBg11 from "../assets/images/backgrounds/experience-and-rating-video-bg.jpg";
 import about from "../assets/images/resources/about-one-img-1.jpg";
@@ -128,7 +128,7 @@ function Home() {
               <div className="swiper-slide">
                 <div
                   className="main-slider__image"
-                  style={{ backgroundImage: `url(${sliderBg})`,height: '100%' ,width: '100%'}}
+                  style={{ backgroundImage: `url(${sliderBg})`,height: '100%' ,width: '120%'}}
                 ></div>
 
                 <div className="container">
@@ -138,31 +138,24 @@ function Home() {
                         {/* Line from top */}
                         <p
                           className="main-slider__sub-title"
-                          style={topLineStyle}
+                          style={{topLineStyle, color:'white'}}
                         >
                           We Provide ...
                         </p>
 
                         {/* Line from top */}
-                        <h2 className="main-slider__title" style={topLineStyle}>
+                        <h2 className="main-slider__title" style={{topLineStyle,color:'white'}}>
                           Home Appliances <br />
                           Repair Service
                         </h2>
 
                         {/* Line from top */}
-                        <h4 className="main-slider__text" style={topLineStyle}>
+                        <h4 className="main-slider__text" style={{topLineStyle, color:'white'}}>
                           Same day service Guaranteed Or It's Free!
                         </h4>
 
                         {/* Line from bottom */}
-                        <p
-                          className="main-slider__text-two"
-                          style={bottomLineStyle}
-                        >
-                          * Call before 12 Noon, Monday - Friday <br />
-                          And we will be there <span>Today</span>, or our labor
-                          is <span>Free</span>
-                        </p>
+                       
 
                         {/* Button from bottom */}
                         <div
@@ -650,7 +643,7 @@ function Home() {
                   </div>
                   <div className="process__title-box">
                     <h4 className="process__title">Contact Us</h4>
-                    <p className="process__sub-title">First Steop of Process</p>
+                    <p className="process__sub-title">First Step of Process</p>
                   </div>
                   <p className="process__text">
                    Fill form or call us we heard your request as soon as possible
@@ -670,7 +663,7 @@ function Home() {
                   </div>
                   <div className="process__title-box">
                     <h4 className="process__title">Breakdown Analysis</h4>
-                    <p className="process__sub-title">Second Steop of Process</p>
+                    <p className="process__sub-title">Second Step of Process</p>
                   </div>
                   <p className="process__text">
                     We will assign best technician for your problem
@@ -690,10 +683,10 @@ function Home() {
                   </div>
                   <div className="process__title-box">
                     <h4 className="process__title">Performing Repairs</h4>
-                    <p className="process__sub-title">Third Steop of Process</p>
+                    <p className="process__sub-title">Third Step of Process</p>
                   </div>
                   <p className="process__text">
-                    our 
+                    Our technician Performing Repairs on Appliances and fix the issues
                   </p>
                 </div>
               </div>
@@ -709,11 +702,11 @@ function Home() {
                     <span className="icon-fixed"></span>
                   </div>
                   <div className="process__title-box">
-                    <h4 className="process__title">Fix the Problem</h4>
+                    <h4 className="process__title">Feedback</h4>
                     <p className="process__sub-title">Third Steop of Process</p>
                   </div>
                   <p className="process__text">
-                    Perspiciatis unde omnis iste natus error voluptatem
+                   we will summarize repair expenses and warranty coverage
                   </p>
                 </div>
               </div>
