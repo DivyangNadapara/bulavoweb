@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { toast } from 'react-toastify';
+import { toast,ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 const Popup = ({ onClose }) => {
     const animationStyles = `
@@ -66,9 +67,9 @@ useEffect(() => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const { name, email, telnumber, altPhone, address, pincode, message } = formData;
-
+  
     // Validate each field
     if (!regexPatterns.name.test(name)) {
       toast.error("Invalid name. Only letters and spaces are allowed.");
@@ -98,20 +99,24 @@ useEffect(() => {
       toast.error("Message cannot be empty.");
       return;
     }
-
+  
     const dataToSubmit = {
       ...formData,
       service: selectedService,
     };
-
+  
     try {
-      const response = await axios.post("https://bulavo-backend1-kohl.vercel.app/bookservice", dataToSubmit);
-
+      const response = await axios.post("https://bulavo-backend1-xi.vercel.app/bookservice", dataToSubmit);
+  
       if (response.status !== 201) {
         throw new Error("Failed to submit form. Please try again.");
       }
-
+      
+      
+  
       toast.success("Form submitted successfully!");
+      
+      // Reset form fields
       setFormData({
         name: "",
         email: "",
@@ -122,13 +127,19 @@ useEffect(() => {
         message: "",
       });
       setSelectedService("");
-      onClose();
-
+  
+      // Close the popup after a successful submission
+      setTimeout(() => {
+        onClose();
+      }, 2000); 
+  
     } catch (error) {
       console.error("Error submitting form:", error);
       toast.error("Error submitting form. Please try again.");
     }
   };
+  
+
 
   const popupStyle = {
     position: 'fixed',
@@ -137,7 +148,7 @@ useEffect(() => {
     transform: 'translate(-50%, -50%)',
     backgroundColor: '#fff',
     boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
-    zIndex: 10000,
+    zIndex: 1200,
     padding: '30px',
     borderRadius: '10px',
     width: '400px',
@@ -168,19 +179,20 @@ useEffect(() => {
   height: '100%',
   backgroundColor: 'rgba(0, 0, 0, 0.5)',
   backdropFilter: 'blur(5px)',
-  zIndex: 9999,
+  zIndex: 1100,
   opacity: 1,
   transition: 'opacity 0.3s ease-in-out', // Add this line
 }} onClick={onClose}></div>
 
       <div style={popupStyle}>
+        <ToastContainer/>
         <button onClick={onClose} style={closeButtonStyle}>✖</button>
         <h2 style={{ marginBottom: '20px', textAlign: 'center', fontSize: '24px' }}>Contact Us</h2>
         <form onSubmit={handleSubmit} className="contact-page__form contact-form-validated">
           <input type="text" placeholder="Your name" name="name" value={formData.name} onChange={handleInputChange} required style={{ width: '100%', marginBottom: '15px', padding: '10px', border: '1px solid #ddd', borderRadius: '5px' }} />
           <input type="email" placeholder="Your email" name="email" value={formData.email} onChange={handleInputChange} required style={{ width: '100%', marginBottom: '15px', padding: '10px', border: '1px solid #ddd', borderRadius: '5px' }} />
           <input type="text" placeholder="Phone Number" name="telnumber" value={formData.telnumber} onChange={handleInputChange} required style={{ width: '100%', marginBottom: '15px', padding: '10px', border: '1px solid #ddd', borderRadius: '5px' }} />
-          <input type="text" placeholder="Alternative Phone Number" name="altPhone" value={formData.altPhone} onChange={handleInputChange} required style={{ width: '100%', marginBottom: '15px', padding: '10px', border: '1px solid #ddd', borderRadius: '5px' }} />
+          <input type="text" placeholder="Alternative Phone Number" name="altPhone" value={formData.altPhone} onChange={handleInputChange}  style={{ width: '100%', marginBottom: '15px', padding: '10px', border: '1px solid #ddd', borderRadius: '5px' }} />
           
           <select required name="services" className="contact-page__dropdown" value={selectedService} onChange={(e) => setSelectedService(e.target.value)} style={{ width: '100%', marginBottom: '15px', padding: '10px', border: '1px solid #ddd', borderRadius: '5px' }}>
             <option value="" disabled>Select a service</option>
@@ -199,9 +211,17 @@ useEffect(() => {
 
           <input type="text" placeholder="Address" name="address" value={formData.address} onChange={handleInputChange} required style={{ width: '100%', marginBottom: '15px', padding: '10px', border: '1px solid #ddd', borderRadius: '5px' }} />
           <input type="text" placeholder="Pincode" name="pincode" value={formData.pincode} onChange={handleInputChange} required style={{ width: '100%', marginBottom: '15px', padding: '10px', border: '1px solid #ddd', borderRadius: '5px' }} />
-          <textarea name="message" placeholder="Your message" value={formData.message} onChange={handleInputChange} required style={{ width: '100%', marginBottom: '15px', padding: '10px', border: '1px solid #ddd', borderRadius: '5px', height: '80px' }}></textarea>
+          <textarea name="message" placeholder="Your message" value={formData.message} onChange={handleInputChange}  style={{ width: '100%', marginBottom: '15px', padding: '10px', border: '1px solid #ddd', borderRadius: '5px', height: '80px' }}></textarea>
           
-          <button type="submit" className="thm-btn contact-page__btn" style={{ width: '100%', padding: '10px', backgroundColor: '#28a745', color: '#fff', border: 'none', borderRadius: '5px', fontSize: '16px' }}>Hire us now</button>
+          {/* <button type="submit" className="thm-btn contact-page__btn" style={{ width: '100%', padding: '10px', backgroundColor: '#28a745', color: '#fff', border: 'none', borderRadius: '5px', fontSize: '16px' }}>Hire us now</button> */}
+          
+                          
+                          <button type="submit" style={{border: 'none',width:'100%'}}
+                            className="thm-btn main-slider__btn"
+                          >
+                            Book Service
+                          </button>
+                        
         </form>
       </div>
     </>

@@ -115,6 +115,7 @@ const TestimonialCarousel = () => {
                 onClick={prevSlide}
                 className="nav-button"
                 disabled={isAnimating}
+                aria-label="navigation"
               >
                 <ChevronLeft />
               </button>
@@ -125,6 +126,7 @@ const TestimonialCarousel = () => {
                     key={index}
                     onClick={() => !isAnimating && setCurrentSlide(index)}
                     className={`dot ${currentSlide === index ? 'active' : ''}`}
+                    aria-label="slide"
                   />
                 ))}
               </div>
@@ -133,6 +135,7 @@ const TestimonialCarousel = () => {
                 onClick={nextSlide}
                 className="nav-button"
                 disabled={isAnimating}
+                aria-label="nextslide"
               >
                 <ChevronRight />
               </button>
@@ -147,6 +150,7 @@ const TestimonialCarousel = () => {
           padding: 80px 0;
           background: linear-gradient(180deg, #f0f7ff 0%, #ffffff 50%, #f0f7ff 100%);
           overflow: hidden;
+          
         }
 
         .background-decoration {
@@ -223,6 +227,7 @@ const TestimonialCarousel = () => {
         .testimonial-container {
           max-width: 800px;
           margin: 0 auto;
+          
         }
 
         .testimonial-card {
@@ -273,7 +278,7 @@ const TestimonialCarousel = () => {
           font-size: 18px;
           line-height: 1.6;
           color: #4a4a4a;
-          font-style: italic;
+          
         }
 
         .testimonial-author {

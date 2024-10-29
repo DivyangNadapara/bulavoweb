@@ -14,7 +14,7 @@ const Header = () => {
     { name: 'Services', path: '/services' },
     { name: 'Blog', path: '/blog' },
     { name: 'Contact Us', path: '/contact' },
-    { name: 'Become a Patner', path: '/patner' }
+    { name: 'Become a Partner', path: '/patner' }
   ];
 
   const getLinkStyle = (path) => {
@@ -27,7 +27,7 @@ const Header = () => {
       };
     }
     return {
-      color: isActive ? '#f1d551' : (isHomePage ? 'black' : 'white'),
+      color: isActive ? '#f1d551' : (isHomePage ? 'white' : 'white'),
       transition: 'color 0.3s ease'
     };
   };
@@ -88,7 +88,7 @@ const Header = () => {
                         <li className="dropdown" key={index}>
                           <Link 
                             to={item.path}
-                            style={getLinkStyle(item.path)}
+                            style={{ ...getLinkStyle(item.path), fontWeight: 'bold' }} 
                           >
                             {item.name}
                           </Link>
@@ -194,10 +194,10 @@ const Header = () => {
             <p style={{ color: 'white', marginBottom: '10px' }}>Phone: <a href="tel:+9328939099" style={{ color: 'white' }}>+91 9328939099</a></p>
             <p style={{ color: 'white', marginBottom: '10px' }}>Email: <a href="mailto:info@example.com" style={{ color: 'white' }}>info@example.com</a></p>
             <a href="#" style={{ marginRight: '10px' }}>
-              <i className="fab fa-instagram" style={{ color: 'red' }}></i>
+              <i className="fab fa-instagram" style={{ color: '#f1d551' }}></i>
             </a>
             <a href="#">
-              <i className="fab fa-facebook-f" style={{ color: 'red' }}></i>
+              <i className="fab fa-facebook-f" style={{ color: '#f1d551' }}></i>
             </a>
           </div>
         </div>

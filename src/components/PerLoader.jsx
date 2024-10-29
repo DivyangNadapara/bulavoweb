@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import logo from '../assets/images/backgrounds/BulavoLogo.png'; // Update with your logo path
 
 const PreLoader = () => {
   const isAnimatingRef = useRef(false);
@@ -7,23 +8,17 @@ const PreLoader = () => {
   useEffect(() => {
     const handlePreloader = () => {
       const loaderWrap = document.querySelector('.loader-wrap');
-      
-      // Only run animation if it hasn't started yet
+
       if (loaderWrap && !isAnimatingRef.current) {
         isAnimatingRef.current = true;
-        
-        // Fade out loader after 1 second
+
         setTimeout(() => {
           gsap.to(loaderWrap, {
             duration: 1,
-            opacity: 0,
-            onComplete: () => {
-              loaderWrap.style.display = 'none';
-            }
+            opacity: 0,         
           });
         }, 1000);
 
-        // Animate overlay
         gsap.to('.loader-wrap .overlay', {
           duration: 1.5,
           left: '100%',
@@ -33,10 +28,8 @@ const PreLoader = () => {
       }
     };
 
-    // Run the animation when component mounts
     handlePreloader();
 
-    // Cleanup function
     return () => {
       isAnimatingRef.current = false;
     };
@@ -52,11 +45,16 @@ const PreLoader = () => {
           <div className="layer layer-two">
             <span className="overlay"></span>
           </div>
-          <div  className="layer layer-three">
+          <div className="layer layer-three">
             <span className="overlay"></span>
           </div>
           <div className="animation-preloader">
-            <div className="spinner"></div>
+            <div className="spinner">
+              {/* Logo placed in a separate div to avoid spinning */}
+              <div className="logo-container">
+                <img src={logo} alt="Logo" className="logo" />
+              </div>
+            </div>
             <div className="txt-loading">
               {['B', 'U', 'L', 'A', 'V', 'O'].map((letter, index) => (
                 <span

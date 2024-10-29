@@ -1,11 +1,10 @@
 import Header from "../components/Header.jsx";
-import sliderBg from "../assets/images/backgrounds/2210.jpg";
+import sliderBg from "../assets/images/backgrounds/221.webp";
 import sliderBg1 from "../assets/images/shapes/experience-and-rating-experience-shape-1.jpg";
 import sliderBg11 from "../assets/images/backgrounds/experience-and-rating-video-bg.jpg";
 import about from "../assets/images/resources/about-one-img-1.jpg";
 import why from "../assets/images/resources/why-choose-one-img-1.jpg";
 import tv from "../assets/img/image.webp";
-import why1 from "../assets/img/electronic.jpg";
 import contect from "../assets/images/icon/contact-bar-call-icon.png";
 import backgroundImage from "../assets/images/backgrounds/contact-bar-bg.jpg";
 import faq from "../assets/images/backgrounds/faq-one-bg.jpg";
@@ -19,11 +18,13 @@ import "odometer/themes/odometer-theme-default.css";
 import Footer from "../components/footer/Footer.jsx";
 import { Link } from "react-router-dom";
 
+
 function Home() {
   const odometerRef = useRef(null);
   const [animate, setAnimate] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [hasAnimated, setHasAnimated] = useState(false);
+  
 
   useEffect(() => {
     setTimeout(() => {
@@ -128,7 +129,7 @@ function Home() {
               <div className="swiper-slide">
                 <div
                   className="main-slider__image"
-                  style={{ backgroundImage: `url(${sliderBg})`,height: '100%' ,width: '120%'}}
+                  style={{ backgroundImage: `url(${sliderBg})`,height: '100%' ,width: '120%'  }}
                 ></div>
 
                 <div className="container">
@@ -150,9 +151,9 @@ function Home() {
                         </h2>
 
                         {/* Line from top */}
-                        <h4 className="main-slider__text" style={{topLineStyle, color:'white'}}>
+                        <h3 className="main-slider__text" style={{topLineStyle, color:'white'}}>
                           Same day service Guaranteed Or It's Free!
-                        </h4>
+                        </h3>
 
                         {/* Line from bottom */}
                        
@@ -203,7 +204,7 @@ function Home() {
                     style={{ backgroundImage: `url(${sliderBg11})` }}
                   ></div>
                   <div className="experience-and-rating__video-link">
-                    <a
+                    <a aria-label="youtube video"
                       href="https://www.youtube.com/watch?v=Get7rqXYrbQ"
                       className="video-popup"
                     >
@@ -398,7 +399,7 @@ function Home() {
                 <li className="services-one__list">
                   <div className="services-one__single">
                     <div className="services-one__icon">
-                      <img src={tv} style={{height:"66px"}}></img>
+                      <img src={tv} style={{height:"66px"}} alt="tv"></img>
                     </div>
                     <div className="services-one__title-box">
                       <h4 className="services-one__title">
@@ -766,7 +767,7 @@ function Home() {
         <section className="faq-one">
           <div
             className="faq-one__bg"
-            style={{ backgroundImage: `url(${faq})` }}
+            style={{ backgroundImage: `url(${faq})`,height: '100%', width:'100%'}}
           ></div>
           <div style={{height:'70vh'}} className="container">
             <div  className="row">
@@ -843,118 +844,7 @@ function Home() {
         </section>
         {/* <!--FAQ One End--> */}
         {/* <!--Blog One Start--> */}
-        <section className="blog-one">
-          <div className="container">
-            <div className="blog-one__top">
-              <div className="row">
-                <div className="col-xl-7 col-lg-6">
-                  <div className="blog-one__top-left">
-                    <div className="section-title text-left">
-                      <span className="section-title__tagline">our blogs</span>
-                      <h2 className="section-title__title">News & Articles</h2>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-xl-5 col-lg-6">
-                  <div className="blog-one__top-right">
-                    <p className="blog-one__top-text-1">
-                      Stay informed with the latest updates, tips, and insights
-                      from Bulavo! Our News & Articles section features industry
-                      trends, helpful maintenance advice, and announcements
-                      about our services. Whether you’re looking for appliance
-                      care tips or news about our company, you’ll find valuable
-                      information to help you make the most of your home
-                      appliances.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="blog-one__bottom">
-              <div className="row">
-                {/* <!--Blog One Single Start--> */}
-                <div
-                  className="col-xl-4 col-lg-4 wow fadeInUp"
-                  data-wow-delay="100ms"
-                >
-                  <div className="blog-one__single">
-                    <div className="blog-one__img-box">
-                      <div className="blog-one__img">
-                        <img src={blog} alt="blog" />
-                      </div>
-                    </div>
-                    <div className="blog-one__content-box">
-                      <div className="blog-one__date">
-                        <p>
-                          <span>Admin</span>17 March 2023
-                        </p>
-                      </div>
-                      <h3 className="blog-one__title">
-                        <a href="#">
-                          5 Essential Tips for Maintaining Your Home Appliances
-                        </a>
-                      </h3>
-                    </div>
-                  </div>
-                </div>
-                {/* <!--Blog One Single End-->
-                        <!--Blog One Single Start--> */}
-                <div
-                  className="col-xl-4 col-lg-4 wow fadeInUp"
-                  data-wow-delay="200ms"
-                >
-                  <div className="blog-one__single active">
-                    <div className="blog-one__img-box">
-                      <div className="blog-one__img">
-                        <img src={blog2} alt="blog2" />
-                      </div>
-                    </div>
-                    <div className="blog-one__content-box">
-                      <div className="blog-one__date">
-                        <p>
-                          <span>Admin</span>17 March 2023
-                        </p>
-                      </div>
-                      <h3 className="blog-one__title">
-                        <a href="#">
-                          Bulavo Introduces Same-Day Repair Services!
-                        </a>
-                      </h3>
-                    </div>
-                  </div>
-                </div>
-                {/* <!--Blog One Single End-->
-                        <!--Blog One Single Start--> */}
-                <div
-                  className="col-xl-4 col-lg-4 wow fadeInUp"
-                  data-wow-delay="300ms"
-                >
-                  <div className="blog-one__single">
-                    <div className="blog-one__img-box">
-                      <div className="blog-one__img">
-                        <img src={blog3} alt="blog3" />
-                      </div>
-                    </div>
-                    <div className="blog-one__content-box">
-                      <div className="blog-one__date">
-                        <p>
-                          <span>Admin</span>17 March 2023
-                        </p>
-                      </div>
-                      <h3 className="blog-one__title">
-                        <a href="#">
-                          Understanding Appliance Warranties: What You Need to
-                          Know
-                        </a>
-                      </h3>
-                    </div>
-                  </div>
-                </div>
-                {/* <!--Blog One Single End--> */}
-              </div>
-            </div>
-          </div>
-        </section>
+       
         {/* <!--Blog One End--> */}
         <Footer />
         <a
@@ -975,7 +865,7 @@ function Home() {
             zIndex: 1000,
           }}
         >
-          <i className="fa fa-angle-up"></i>
+          <i aria-label="go to top" className="fa fa-angle-up"></i>
         </a>
       </div>
     </>

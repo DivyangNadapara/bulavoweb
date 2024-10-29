@@ -67,8 +67,7 @@ function Services() {
                   </Link>
                 </h3>
                 <p className="services-page__text">
-                  New normal that has done evolved from generation is on the
-                  runway heading towards a streamlined.
+                Appliance care has evolved over time, ensuring your refrigerator operates smoothly and efficiently for your daily needs
                 </p>
                 <div className="services-page__read-more">
                   <Link to="/contact" state={{ service: "Refrigerator Repair"}}>
@@ -88,8 +87,7 @@ function Services() {
                   </Link>
                 </h3>
                 <p className="services-page__text">
-                  New normal that has done evolved from generation is on the
-                  runway heading towards a streamlined.
+                Efficient laundry solutions have evolved, ensuring your washing machine runs smoothly for all your cleaning needs
                 </p>
                 <div className="services-page__read-more">
                   <Link to="/contact" state={{ service: "Washing Machine Repair" }}>
@@ -109,8 +107,7 @@ function Services() {
                   </Link>
                 </h3>
                 <p className="services-page__text">
-                  New normal that has done evolved from generation is on the
-                  runway heading towards a streamlined.
+                Microwave ovens have evolved significantly, and our repair services ensure your appliance operates efficiently and reliably
                 </p>
                 <div className="services-page__read-more">
                 <Link to="/contact" state= {{ service: "Microwave Oven Repair"  }}>
@@ -130,8 +127,7 @@ function Services() {
                   </Link>
                 </h3>
                 <p className="services-page__text">
-                  New normal that has done evolved from generation is on the
-                  runway heading towards a streamlined.
+                Water heating solutions have advanced, ensuring your heater operates efficiently for consistent hot water when needed
                 </p>
                 <div className="services-page__read-more">
                 <Link to="/contact" state= {{ service: "Water Heater Repair" }}>
@@ -151,8 +147,7 @@ function Services() {
                   </Link>
                 </h3>
                 <p className="services-page__text">
-                  New normal that has done evolved from generation is on the
-                  runway heading towards a streamlined.
+                Stove technology has improved, providing efficient repairs to keep your cookware working seamlessly for delicious meals
                 </p>
                 <div className="services-page__read-more">
                 <Link to="/contact"state={{ service: "Stove Repair"  }}>
@@ -172,8 +167,7 @@ function Services() {
                   </Link>
                 </h3>
                 <p className="services-page__text">
-                  New normal that has done evolved from generation is on the
-                  runway heading towards a streamlined.
+                Mixing appliances have transformed, providing essential repairs to ensure your mixer performs perfectly for all recipes
                 </p>
                 <div className="services-page__read-more">
                 <Link to="/contact" state= {{ service: "Mixer Repair"  }}>
@@ -193,8 +187,7 @@ function Services() {
                   </Link>
                 </h3>
                 <p className="services-page__text">
-                  New normal that has done evolved from generation is on the
-                  runway heading towards a streamlined.
+                Air conditioning systems have advanced, providing prompt repairs to keep your environment comfortable all year round
                 </p>
                 <div className="services-page__read-more">
                 <Link to="/contact" state={{ service: "AC Repair" }}>
@@ -214,8 +207,7 @@ function Services() {
                   </Link>
                 </h3>
                 <p className="services-page__text">
-                  New normal that has done evolved from generation is on the
-                  runway heading towards a streamlined.
+                Television technology has transformed, ensuring your screen performs perfectly for an enhanced viewing experience every time
                 </p>
                 <div className="services-page__read-more">
                 <Link to="/contact" state={{ service: "TV Repair"  }}>
@@ -235,8 +227,7 @@ function Services() {
                   </Link>
                 </h3>
                 <p className="services-page__text">
-                  New normal that has done evolved from generation is on the
-                  runway heading towards a streamlined.
+                Geyser efficiency has improved, allowing our repair services to keep your hot water supply reliable and consistent
                 </p>
                 <div className="services-page__read-more">
                 <Link to="/contact" state={{ service: "Geyser Repair"  }}>
@@ -256,8 +247,7 @@ function Services() {
                   </Link>
                 </h3>
                 <p className="services-page__text">
-                  New normal that has done evolved from generation is on the
-                  runway heading towards a streamlined.
+                Chimney systems have evolved, ensuring efficient repairs for a smoke-free kitchen and improved air quality at home.
                 </p>
                 <div className="services-page__read-more">
                 <Link to="/contact" state= {{ service: "Chimney Repair" }}>
@@ -277,8 +267,7 @@ function Services() {
                   </Link>
                 </h3>
                 <p className="services-page__text">
-                  New normal that has done evolved from generation is on the
-                  runway heading towards a streamlined.
+                Water purification has advanced, guaranteeing efficient repairs to keep your R.O. system delivering clean, safe drinking water
                 </p>
                 <div className="services-page__read-more">
                 <Link to="/contact" state={{ service: "R.O Water Purifier Repair"  }}>
@@ -409,7 +398,7 @@ function Services() {
           zIndex: 1000,
         }}
       >
-        <i className="fa fa-angle-up"></i>
+        <i aria-label="go to top" className="fa fa-angle-up"></i>
       </a>
     </div>
   );

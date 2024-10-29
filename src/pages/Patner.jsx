@@ -19,7 +19,12 @@ function Patner() {
     aadharimg: null,
     profileimg: null,
   });
-
+  const regexPatterns = {
+    name: /^[A-Za-z\s]+$/, // Only letters and spaces
+    email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, // Email format
+    telnumber: /^\d{10}$/, // Exactly 10 digits
+    expertise: /^[A-Za-z0-9\s.,-]+$/, // Allow letters, numbers, spaces, and basic punctuation
+  };
   const handleChange = (e) => {
     const { name, value, files } = e.target;
 
@@ -61,6 +66,29 @@ function Patner() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true); // Start loading
+  
+    // Validate each field
+    if (!regexPatterns.name.test(formData.name)) {
+      toast.error("Invalid name. Only letters and spaces are allowed.");
+      setLoading(false);
+      return;
+    }
+    if (!regexPatterns.email.test(formData.email)) {
+      toast.error("Invalid email format.");
+      setLoading(false);
+      return;
+    }
+    if (!regexPatterns.telnumber.test(formData.telnumber)) {
+      toast.error("Telephone number must be exactly 10 digits.");
+      setLoading(false);
+      return;
+    }
+    if (!regexPatterns.expertise.test(formData.expertise)) {
+      toast.error("Expertise can only contain letters, numbers, and basic punctuation.");
+      setLoading(false);
+      return;
+    }
+  
     try {
       // Upload images to Firebase and get their URLs
       const aadharRef = ref(
@@ -80,7 +108,7 @@ function Patner() {
 
       // Send form data with image URLs to your API
       const response = await axios.post(
-        "https://bulavo-backend1-kohl.vercel.app/technician",
+        "https://bulavo-backend1-xi.vercel.app/technician",
         {
           ...formData,
           aadharimg: aadharUrl,
@@ -143,7 +171,7 @@ function Patner() {
                 >
                   Why Join Bulavo Services
                 </span>
-                <p>
+                <p style={{textAlign:'justify'}}>
                   At Bulavo Services, we value our technicians as the backbone
                   of our operations. Joining our team means becoming part of a
                   supportive community dedicated to excellence in service. We
@@ -162,7 +190,7 @@ function Patner() {
                 >
                   How To Join
                 </span>
-                <p>
+                <p style={{textAlign:'justify'}}>
                   Please fill out the form, and we will get in touch with you
                   shortly. Our team will reach out to you via phone to discuss
                 </p>

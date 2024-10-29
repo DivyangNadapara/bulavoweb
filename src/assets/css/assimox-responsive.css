@@ -658,9 +658,14 @@
        
         
     }
+    .gg{
+        margin-top: 55px;
+    }
 
     .main-slider__image{
         opacity: 0.4;
+        height: 100%;
+        width: 100%;
         
     }
     .div{

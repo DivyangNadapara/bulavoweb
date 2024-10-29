@@ -59,7 +59,8 @@ import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import PerLoader from './components/PerLoader';
 import CustomCursor from './components/CustomCursor'; 
-import Popup from './components/Popup'; // Import the Popup component
+import Popup from  './components/Popup.jsx'
+// Import the Popup component
 
 const Home = lazy(() => import('./pages/Home.jsx'));
 const About = lazy(() => import('./pages/About.jsx'));
@@ -88,26 +89,47 @@ const AppContent = () => {
 
   useEffect(() => {
     const currentPath = location.pathname;
-    const isPopupClosed = localStorage.getItem(`popupClosed-${currentPath}`);
-
-    if (!isPopupClosed) {
-      const popupTimer = setTimeout(() => {
-        setShowPopup(true);
-      }, 10000); // Show popup after 10 seconds
-
-      return () => clearTimeout(popupTimer);
+    const isPopupClosed = localStorage.getItem(`popupClosed-${currentPath}`) || localStorage.getItem('popupClosed-blog');
+  
+    // Check if the current path is exactly '/blog'
+    const isBlogMainPage = currentPath === '/blog';
+  
+    // Exclude the popup for /contact and /patner pages
+    if (!isPopupClosed && currentPath !== '/contact' && currentPath !== '/patner') {
+      if (isBlogMainPage) {
+        const popupTimer = setTimeout(() => {
+          setShowPopup(true);
+        }, 10000); // Show popup after 10 seconds
+  
+        return () => clearTimeout(popupTimer);
+      } else {
+        // Handle other pages if needed
+        const otherPopupTimer = setTimeout(() => {
+          setShowPopup(true);
+        }, 10000); // Show popup after 10 seconds
+  
+        return () => clearTimeout(otherPopupTimer);
+      }
     }
   }, [location.pathname]); // Reset on path change
-
+  
   const handleClosePopup = () => {
     const currentPath = location.pathname;
     setShowPopup(false);
-    localStorage.setItem(`popupClosed-${currentPath}`, 'true'); // Store in local storage for the current path
+  
+    // Store in local storage for the Blog main page
+    if (currentPath === '/blog') {
+      localStorage.setItem('popupClosed-blog', 'true');
+    } else {
+      // Store in local storage for other pages
+      localStorage.setItem(`popupClosed-${currentPath}`, 'true');
+    }
   };
-
+  
   if (isLoading) {
     return <PerLoader />;
   }
+  
 
   return (
     <>
@@ -120,7 +142,7 @@ const AppContent = () => {
           <Route path="/services" element={<Services />} />
           <Route path="/contact/" element={<Contact />} />
           <Route path="/singleservice" element={<Singleservice />} />
-          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/blog/:slag" element={<Blogs />} />
           <Route path="/patner" element={<Patner />} />
         </Routes>
       </Suspense>

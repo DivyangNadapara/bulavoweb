@@ -34,7 +34,7 @@ const Footer = () => {
                             </div>
                             <div className="content">
                                 <h4>Email us :</h4>
-                                <a href="mailto:contact@bulavo.com">contact@bulavo.com</a>
+                                <a href="mailto:contact@bulavo.com">bulavoservices@gmil.com</a>
                             </div>
                         </li>
                         <li>
@@ -109,7 +109,7 @@ const Footer = () => {
             <div className="row">
                 <div className="col-xl-12">
                     <div className="site-footer__bottom-inner">
-                        <p className="site-footer__bottom-text">© Copyright <a href="#">BULAVO</a> 2023 . All
+                        <p className="site-footer__bottom-text">© Copyright <a href="#">BULAVO</a> 2024 . All
                             right reserved.</p>
                       
                     </div>

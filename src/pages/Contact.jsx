@@ -85,7 +85,7 @@ function Contact() {
     setLoading(true); // Start loading
     try {
       const response = await axios.post(
-        "https://bulavo-backend1-kohl.vercel.app/bookservice",
+        "https://bulavo-backend1-xi.vercel.app/bookservice",
         dataToSubmit
       );
 
@@ -413,7 +413,7 @@ function Contact() {
             zIndex: 1000,
           }}
         >
-          <i className="fa fa-angle-up"></i>
+          <i aria-label="go to top" className="fa fa-angle-up"></i>
         </a>
       </div>
       <style jsx="true">{`
